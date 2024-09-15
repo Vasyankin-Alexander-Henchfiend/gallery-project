@@ -1,0 +1,19 @@
+.header {
+    width: 100%;
+    max-width: 1240px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    margin: 28px 0;
+}
+
+.logo {
+    width: 91px;
+    height: 20px;
+}
+
+.theme-icon {
+    width: 24px;
+    height: 24px;
+}
