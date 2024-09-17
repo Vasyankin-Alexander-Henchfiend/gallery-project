@@ -1,0 +1,15 @@
+.main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.gallery {
+    margin-top: 20px;
+    max-width: 1240px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 32px;
+}
+

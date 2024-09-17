@@ -1,0 +1,43 @@
+.picture-container {
+    width: 392px;
+    height: 260px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.discription-container {
+    width: 300px;
+    height: 82px;
+    padding: 20px;
+    box-sizing: border-box;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 1);
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.name {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19.38px;
+    color: rgba(18, 18, 18, 1);
+}
+
+.date {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 14.52px;
+    color: rgba(155, 75, 75, 1);
+}
