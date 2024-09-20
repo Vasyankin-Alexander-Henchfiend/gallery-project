@@ -27,7 +27,6 @@ export const getPictures = async (pageNumber: number): Promise<TPicture[]> => {
       return res.data;
     })
     .then((data) => {
-      console.log(data);
       return data;
     })
     .catch((err) => {
@@ -35,3 +34,16 @@ export const getPictures = async (pageNumber: number): Promise<TPicture[]> => {
       return [];
     });
 };
+
+export const getPicturesTotal = async (): Promise<number> => {
+  return await axios
+    .get(BASE_URL + "paintings")
+    .then((res) => {
+      responseCheck(res);
+      return res.data.length;
+    })
+    .catch((err) => {
+      console.log(err);
+      return 0;
+    });
+}

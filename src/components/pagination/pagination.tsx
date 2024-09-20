@@ -24,6 +24,10 @@ export const Pagination = (props: TPaginationProps) => {
         onPrevPageClick();
     };
 
+    const pageNumbers = (number: number): number[] => {
+      return (Array.from({ length: number }, (v, i) => i + 1));
+    }
+
      return (
        <div className={styles.paginator}>
          <button
@@ -35,9 +39,13 @@ export const Pagination = (props: TPaginationProps) => {
            {"<"}
          </button>
          {nav && (
-           <span className={styles.navigation}>
-             {nav.current} / {nav.total}
-           </span>
+          pageNumbers(nav.total).map((item, index) => {
+            return (
+              <button  key={index} className={styles.navigation}>
+                <span>{item}</span>
+              </button>
+            );
+          })
          )}
          <button
            className={styles.arrow}
