@@ -22,7 +22,7 @@ export const Main: React.FC = () => {
     const total = data ? getTotalPageCount(picturesTotal) : current;
 
     setPage(next <= total ? next : current);
-  }, [page, data]);
+  }, [page, data, picturesTotal]);
 
   const handlePrevPageClick = useCallback(() => {
     const current = page;
@@ -30,6 +30,13 @@ export const Main: React.FC = () => {
 
     setPage(prev > 0 ? prev : current);
   }, [page]);
+
+  const handleNumberPageClick = useCallback(
+    (page: number) => {
+      setPage(page);
+    },
+    []
+  );
 
   useEffect(() => {
     getPicturesTotal().then((data) => setPicturesTotal(data))
@@ -46,6 +53,7 @@ export const Main: React.FC = () => {
       <Pagination
         onNextPageClick={handleNextPageClick}
         onPrevPageClick={handlePrevPageClick}
+        onNumberPageClick={handleNumberPageClick}
         disable={{
           left: page === 1,
           right: page === getTotalPageCount(picturesTotal),

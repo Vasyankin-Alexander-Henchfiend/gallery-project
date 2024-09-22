@@ -3,6 +3,7 @@ import styles from './pagination.module.css'
 type TPaginationProps = {
   onNextPageClick: () => void;
   onPrevPageClick: () => void;
+  onNumberPageClick: (pageNumber: number) => void;
   disable: {
     left: boolean;
     right: boolean;
@@ -14,7 +15,7 @@ type TPaginationProps = {
 };
 
 export const Pagination = (props: TPaginationProps) => {
-    const { nav = null, disable, onNextPageClick, onPrevPageClick } = props;
+    const { nav = null, disable, onNextPageClick, onPrevPageClick, onNumberPageClick } = props;
 
     const handleNextPageClick = () => {
         onNextPageClick()
@@ -23,6 +24,10 @@ export const Pagination = (props: TPaginationProps) => {
     const handlePrevPageClick = () => {
         onPrevPageClick();
     };
+
+    const handleNumberPageClick = (item: number) => {
+      onNumberPageClick(item);
+    }
 
     const pageNumbers = (number: number): number[] => {
       return (Array.from({ length: number }, (v, i) => i + 1));
@@ -41,7 +46,7 @@ export const Pagination = (props: TPaginationProps) => {
          {nav && (
           pageNumbers(nav.total).map((item, index) => {
             return (
-              <button  key={index} className={styles.navigation}>
+              <button onClick={() => handleNumberPageClick(item)}  key={index} className={styles.navigation}>
                 <span>{item}</span>
               </button>
             );
