@@ -1,0 +1,21 @@
+.filter-button {
+    width: 36px;
+    height: 36px;
+}
+
+.filter-icon {
+    background-image: url(../../images/filter_icon.png);
+}
+
+.search {
+    background-image: url(/src/images/icon-1.png);
+    background-position: 16px;
+    background-repeat: no-repeat;
+    width: 336px;
+    height: 36px;
+    border-radius: 4px;
+    border: 1px solid rgba(222, 222, 222, 1);
+    padding: 8px 10px 8px 48px;
+    box-sizing: border-box;
+    margin-right: 20px;
+}

@@ -4,6 +4,7 @@ import { Picture } from '../picture/picture';
 import { TPicture } from '../types/types';
 import { getPictures, getPicturesTotal } from '../../api/api';
 import { Pagination } from '../pagination/pagination';
+import { Search } from '../search/search';
 
 const PICTURE_PER_PAGE = 6;
 
@@ -15,6 +16,11 @@ export const Main: React.FC = () => {
   const [data, setData] = useState<TPicture[] | []>([]);
   const [page, setPage] = useState<number>(1);
   const [picturesTotal, setPicturesTotal] = useState<number>(0)
+
+  useEffect(() => {
+    getPicturesTotal().then((data) => setPicturesTotal(data))
+    getPictures(page).then((data) => setData(data));
+  }, [page]);
 
   const handleNextPageClick = useCallback(() => {
     const current = page;
@@ -38,13 +44,9 @@ export const Main: React.FC = () => {
     []
   );
 
-  useEffect(() => {
-    getPicturesTotal().then((data) => setPicturesTotal(data))
-    getPictures(page).then((data) => setData(data));
-  }, [page]);
-
   return (
     <main className={styles.main}>
+      <Search />
       <section className={styles.gallery}>
         {data.map((item: TPicture, index: number) => {
           return <Picture item={item} key={index} />;
