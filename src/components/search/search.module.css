@@ -1,13 +1,25 @@
+.search {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 .filter-button {
     width: 36px;
     height: 36px;
+    border: none;
+    background: none;
+    box-sizing: border-box;
+    padding: 0;
 }
 
 .filter-icon {
     background-image: url(../../images/filter_icon.png);
+    width: 24px;
+    height: 24px;
 }
 
-.search {
+.input {
     background-image: url(/src/images/icon-1.png);
     background-position: 16px;
     background-repeat: no-repeat;

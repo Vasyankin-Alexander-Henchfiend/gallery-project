@@ -5,13 +5,13 @@ export const Search = () => {
     const [searchValue, setSearchValue] = useState<string | number | undefined>(undefined)
 
     return (
-      <div>
+      <div className={styles.search}>
         <input
           type="text"
           value={searchValue}
           placeholder="Painting title"
           onChange={(e) => setSearchValue(e.target.value)}
-          className={styles.search}
+          className={styles.input}
         />
         <button className={styles[`filter-button`]}>
           <div className={styles[`filter-icon`]} />
