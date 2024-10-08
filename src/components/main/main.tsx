@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import styles from './main.module.css';
-import { Picture } from '../picture/picture';
-import { TPicture } from '../types/types';
-import { getPictures, getPicturesTotal } from '../../api/api';
 import { Pagination } from '../pagination/pagination';
 import { Search } from '../search/search';
+import { useGetDataTotalQuery, useGetPageQuery } from '../../api/axiosExemple';
+import { TPicture } from '../types/types';
+import { Picture } from '../picture/picture';
 
 const PICTURE_PER_PAGE = 6;
 
@@ -13,14 +13,17 @@ const getTotalPageCount = (rowCount: number): number =>
 
 
 export const Main: React.FC = () => {
-  const [data, setData] = useState<TPicture[] | []>([]);
+  
   const [page, setPage] = useState<number>(1);
-  const [picturesTotal, setPicturesTotal] = useState<number>(0)
+  const [picturesTotal, setPicturesTotal] = useState<number>(0);
+  const { data: picturesSum } = useGetDataTotalQuery('');
+  const { data, error, isLoading } = useGetPageQuery(page); 
 
   useEffect(() => {
-    getPicturesTotal().then((data) => setPicturesTotal(data))
-    getPictures(page).then((data) => setData(data));
-  }, [page]);
+    if (picturesSum) {
+      return setPicturesTotal(picturesSum.length)
+    }
+  }, [data, picturesSum]);
 
   const handleNextPageClick = useCallback(() => {
     const current = page;
@@ -48,9 +51,15 @@ export const Main: React.FC = () => {
     <main className={styles.main}>
       <Search />
       <section className={styles.gallery}>
-        {data.map((item: TPicture, index: number) => {
-          return <Picture item={item} key={index} />;
-        })}
+        {error ? (
+          <>Oh no, there was an error</>
+        ) : isLoading ? (
+          <>Loading...</>
+        ) : data ? (
+          data.map((item: TPicture, index: number) => {
+            return <Picture item={item} key={index} />;
+          })
+        ) : null}
       </section>
       <Pagination
         onNextPageClick={handleNextPageClick}
