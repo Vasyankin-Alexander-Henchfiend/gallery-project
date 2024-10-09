@@ -41,17 +41,28 @@ const axiosBaseQuery =
 
 const BASE_URL = "https://test-front.framework.team";
 
+export type TQuery = {
+  q?: string;
+  authorId?: string;
+};
+
+export type TPageLimit = TQuery&{
+  _page: number;
+  _limit: number;
+};
+
+
 export const api = createApi({
   baseQuery: axiosBaseQuery({
     baseUrl: BASE_URL,
   }),
   endpoints(build) {
     return {
-      getDataTotal: build.query<TPicture[], string>({
-        query: () => ({ url: "/paintings", method: "get" }),
+      getDataTotal: build.query<TPicture[], TQuery>({
+        query: (query: TQuery) => ({ url: "/paintings", method: "get", params: {q: query.q, authorId: query.authorId} }),
       }),
-      getPage: build.query<TPicture[], number>({
-        query: (pageNumber: number) => ({ url: '/paintings', method: 'get', params: {_limit: 6, _page: pageNumber}})
+      getPage: build.query<TPicture[], TPageLimit>({
+        query: (query: TPageLimit) => ({ url: '/paintings', method: 'get', params: query})
       })
     };
   },
