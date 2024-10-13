@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { ChangeEvent, useCallback, useEffect, useState } from "react";
 import styles from "./main.module.css";
 import { Pagination } from "../pagination/pagination";
 import { Search } from "../search/search";
@@ -30,6 +30,10 @@ export const Main: React.FC = () => {
     }
   }, [data, picturesSum]);
 
+  const onChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(event.target.value);
+  };
+
   const handleNextPageClick = useCallback(() => {
     const current = page;
     const next = current + 1;
@@ -51,7 +55,10 @@ export const Main: React.FC = () => {
 
   return (
     <main className={styles.main}>
-      <Search />
+      <Search 
+      value={searchQuery}
+      onChange={onChange}
+      />
       <section className={styles.gallery}>
         {error ? (
           <>Oh no, there was an error</>
