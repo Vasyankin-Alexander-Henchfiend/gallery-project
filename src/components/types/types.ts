@@ -6,3 +6,13 @@ export type TPicture = {
   locationId: number;
   name: string;
 };
+
+export type TQuery = {
+  q?: string;
+  authorId?: string;
+};
+
+export type TPageLimit = TQuery&{
+  _page: number;
+  _limit: number;
+};

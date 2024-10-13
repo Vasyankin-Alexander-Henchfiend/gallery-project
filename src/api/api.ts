@@ -1,49 +1,59 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
-import { TPicture } from "../components/types/types";
+import { createApi } from "@reduxjs/toolkit/query/react";
+import type { BaseQueryFn } from "@reduxjs/toolkit/query";
+import axios from "axios";
+import type { AxiosRequestConfig, AxiosError } from "axios";
+import { TPageLimit, TPicture, TQuery } from "../components/types/types";
+import { BASE_URL } from "../const/pictures";
 
-
-export const BASE_URL = "https://test-front.framework.team/";
-
-function responseCheck(res: AxiosResponse) {
-  if (res.status !== 200) {
-    /*здесь ловим коды ошибок http*/
-    throw new Error(`Код ошибки http = ${res.statusText}`);
-  }
-  return;
-}
-
-
-export const getPictures = async (pageNumber: number): Promise<TPicture[]> => {
-  const requestConfig: AxiosRequestConfig = {
-    params: {
-      _limit: 6,
-      _page: pageNumber,
+const axiosBaseQuery =
+  (
+    { baseUrl }: { baseUrl: string } = { baseUrl: "" }
+  ): BaseQueryFn<
+    {
+      url: string;
+      method?: AxiosRequestConfig["method"];
+      data?: AxiosRequestConfig["data"];
+      params?: AxiosRequestConfig["params"];
+      headers?: AxiosRequestConfig["headers"];
     },
+    unknown,
+    unknown
+  > =>
+  async ({ url, method, data, params, headers }) => {
+    try {
+      const result = await axios({
+        url: baseUrl + url,
+        method,
+        data,
+        params,
+        headers,
+      });
+      return { data: result.data };
+    } catch (axiosError) {
+      const err = axiosError as AxiosError;
+      return {
+        error: {
+          status: err.response?.status,
+          data: err.response?.data || err.message,
+        },
+      };
+    }
   };
-  return await axios
-    .get<TPicture[]>(BASE_URL + "paintings", requestConfig)
-    .then((res) => {
-      responseCheck(res);
-      return res.data;
-    })
-    .then((data) => {
-      return data;
-    })
-    .catch((err) => {
-      console.log(err);
-      return [];
-    });
-};
 
-export const getPicturesTotal = async (): Promise<number> => {
-  return await axios
-    .get(BASE_URL + "paintings")
-    .then((res) => {
-      responseCheck(res);
-      return res.data.length;
-    })
-    .catch((err) => {
-      console.log(err);
-      return 0;
-    });
-}
+export const api = createApi({
+  baseQuery: axiosBaseQuery({
+    baseUrl: BASE_URL,
+  }),
+  endpoints(build) {
+    return {
+      getDataTotal: build.query<TPicture[], TQuery>({
+        query: (query: TQuery) => ({ url: "/paintings", method: "get", params: {q: query.q, authorId: query.authorId} }),
+      }),
+      getPage: build.query<TPicture[], TPageLimit>({
+        query: (query: TPageLimit) => ({ url: '/paintings', method: 'get', params: query})
+      })
+    };
+  },
+});
+
+export const { useGetDataTotalQuery, useGetPageQuery } = api;

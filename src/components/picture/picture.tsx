@@ -1,6 +1,6 @@
 import styles from "./picture.module.css";
 import { TPictureItem } from "./picture.types";
-import { BASE_URL } from "../../api/api";
+import { BASE_URL } from "../../const/pictures";
 
 export const Picture = ({ item }: TPictureItem) => {
   return (
