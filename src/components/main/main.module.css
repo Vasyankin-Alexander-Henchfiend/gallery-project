@@ -4,6 +4,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .gallery {
@@ -14,4 +15,5 @@
     flex-wrap: wrap;
     gap: 32px;
 }
+
 
