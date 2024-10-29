@@ -1,3 +1,5 @@
+@import '../app/styles/index.css';
+
 .app {
     width: 100%;
     display: flex;
@@ -17,7 +19,7 @@
 }
 
 .close-icon {
-    background-image: url(../../images/close-icon-size=default.png);
+    background-image: url(../app/assets/images/close-icon-size=default.png);
     background-position: center;
     width: 16px;
     height: 16px;

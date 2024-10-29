@@ -1,8 +1,10 @@
-import { Header } from '../header/header';
-import { Main } from '../main/main';
-import styles from './app.module.css';
+import { Accordion } from "../accordion/accordion";
+import { Header } from "../header/header";
+import { Main } from "../main/main";
+import styles from "./app.module.css";
 
 function App() {
+  const array = ["Федот", "Петруха", "Алексашка"];
 
   return (
     <div className={styles.app}>
@@ -12,12 +14,22 @@ function App() {
         <button className={styles[`close-button`]}>
           <div className={styles[`close-icon`]}></div>
         </button>
-        <div>первый инпут</div>
-        <div>второй инпут</div>
+        <Accordion
+          title={"Artist"}
+          type={"text"}
+          placeholder={"Select the artist"}
+          itemArray={array}
+        />
+        <Accordion
+          title={"Location"}
+          type={"text"}
+          placeholder={"Select the location"}
+          itemArray={array}
+        />
         <div>третий инпут</div>
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

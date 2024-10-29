@@ -14,13 +14,13 @@
 }
 
 .filter-icon {
-    background-image: url(../../images/filter_icon.png);
+    background-image: url(../app/assets/images/filter_icon.png);
     width: 24px;
     height: 24px;
 }
 
 .input {
-    background-image: url(/src/images/search-icon.png);
+    background-image: url(../app/assets/images/search-icon.png);
     background-position: 16px;
     background-repeat: no-repeat;
     width: 336px;
