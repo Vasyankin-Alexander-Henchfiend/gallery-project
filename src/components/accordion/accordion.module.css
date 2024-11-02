@@ -2,3 +2,30 @@
     font-family: "Cormorant SC";
     text-transform: uppercase;
 }
+
+.icon-plus {
+    background-image: url(../app/assets/images/plus-icon-size=Default.svg);
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.icon-minus {
+    background-image: url(../app/assets/images/minus-icon-size=Default.png);
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.button {
+    width: 320px;
+    border: none;
+    background: none;
+    box-sizing: border-box;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}

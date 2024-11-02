@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../accordion/accordion.module.css";
 
 interface IAccordionProps {
@@ -9,22 +9,27 @@ interface IAccordionProps {
 }
 
 export const Accordion: React.FC<IAccordionProps> = ({ title, type, placeholder, itemArray }) => {
+
+  const [open, setOpen] = useState(false)
+
   return (
     <div>
-      <div>
-        <span className={styles.title}>{title}</span>
-        <button className={styles.button}>
-          <div className={styles[`button-image`]}></div>
+        <button className={styles.button} onClick={() => setOpen(!open)}>
+          <span className={styles.title}>{title}</span>
+          <span className={!open ? styles[`icon-plus`] : styles[`icon-minus`]}></span>
         </button>
-      </div>
-      <input
+      {open ? <input
         type={type}
         placeholder={placeholder}
         className={styles.input}
         list="list"
-      />
+      /> : null}
       <datalist id="list">
-        {itemArray.map((item, index) => <option key={index} value={item}>{item}</option>)}
+        {itemArray.map((item, index) => (
+          <option key={index} value={item}>
+            {item}
+          </option>
+        ))}
       </datalist>
     </div>
   );
