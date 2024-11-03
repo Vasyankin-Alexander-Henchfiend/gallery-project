@@ -8,20 +8,24 @@
     width: 36px;
     height: 36px;
     border: none;
-    background: none;
+    border-radius: 4px;
+    background: rgba(252, 252, 252, 1);
     box-sizing: border-box;
     padding: 0;
     cursor: pointer;
 }
 
 .filter-icon {
-    background-image: url(../app/assets/images/filter_icon.png);
+    background-image: url(/src/components/app/assets/images/filter_icon.svg);
     width: 24px;
     height: 24px;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 6px;
 }
 
 .input {
-    background-image: url(../app/assets/images/search-icon.png);
+    background-image: url(../app/assets/images/search_icon.svg);
     background-position: 16px;
     background-repeat: no-repeat;
     width: 336px;

@@ -1,6 +1,6 @@
 import styles from './header.module.css';
-import logo from "../app/assets/images/logo.png";
-import themeIcon from '../app/assets/images/dark_icon.png';
+import logo from "../app/assets/images/logo.svg";
+import themeIcon from '../app/assets/images/dark_icon.svg';
 import React from 'react';
 
 export const Header: React.FC = () => {
