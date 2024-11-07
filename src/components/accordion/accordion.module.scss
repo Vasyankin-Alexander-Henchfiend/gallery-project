@@ -1,6 +1,17 @@
 .title {
     font-family: "Cormorant SC";
     text-transform: uppercase;
+    margin: 0;
+}
+.fieldset {
+    border: none;
+    .input {
+        color: aqua;
+
+    }
+    .datalist {
+        color: antiquewhite;
+    }
 }
 
 .icon {
@@ -12,7 +23,6 @@
         background-image: url(../app/assets/images/minus-icon-size=Default.svg);
     }
 }
-
 
 .button {
     width: 320px;

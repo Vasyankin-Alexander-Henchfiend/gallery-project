@@ -18,7 +18,7 @@ export const Search: React.FC<InputProps> = ({
         {...rest}
       />
       <button className={styles[`filter-button`]}>
-        <div className={styles[`filter-icon`]} />
+        <i className={styles[`filter-icon`]} ></i>
       </button>
     </div>
   );

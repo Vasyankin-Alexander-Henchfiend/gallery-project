@@ -15,26 +15,30 @@ export const Accordion: React.FC<IAccordionProps> = ({ title, type, placeholder,
   return (
     <div>
       <button className={styles.button} onClick={() => setOpen(!open)}>
-        <span className={styles.title}>{title}</span>
-        <span
-          className={!open ? styles.icon : `${styles.icon} ${styles[`icon-open`]}`}
-        ></span>
+        <h4 className={styles.title}>{title}</h4>
+        <i
+          className={
+            !open ? styles.icon : `${styles.icon} ${styles[`icon-open`]}`
+          }
+        ></i>
       </button>
       {open ? (
-        <input
-          type={type}
-          placeholder={placeholder}
-          className={styles.input}
-          list="list"
-        />
+        <fieldset className={styles.fieldset}>
+          <input
+            type={type}
+            placeholder={placeholder}
+            className={styles.input}
+            list=""
+          />
+          <datalist id="list" role="listbox" className={styles.datalist}>
+            {itemArray.map((item, index) => (
+              <option key={index} value={item}>
+                {item}
+              </option>
+            ))}
+          </datalist>
+        </fieldset>
       ) : null}
-      <datalist id="list" role="listbox">
-        {itemArray.map((item, index) => (
-          <option key={index} value={item}>
-            {item}
-          </option>
-        ))}
-      </datalist>
     </div>
   );
 };

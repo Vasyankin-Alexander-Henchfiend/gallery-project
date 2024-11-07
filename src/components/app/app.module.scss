@@ -1,4 +1,4 @@
-@import '../app/styles/index.css';
+@import url(../app/styles/index.scss);
 
 .app {
     width: 100%;
@@ -23,6 +23,7 @@
     &-icon {
         background-image: url(../app/assets/images/close-icon-size=default.svg);
         background-position: center;
+        background-repeat: no-repeat;
         width: 16px;
         height: 16px;
     }
@@ -33,6 +34,7 @@
         background: none;
         box-sizing: border-box;
         padding: 2px;
+        display: flex;
     }
 }
 
