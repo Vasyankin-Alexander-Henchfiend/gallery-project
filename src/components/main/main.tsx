@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useCallback, useEffect, useState } from "react";
-import styles from "./main.module.css";
+import styles from "./main.module.scss";
 import { Pagination } from "../pagination/pagination";
 import { Search } from "../search/search";
 import { useGetDataTotalQuery, useGetPageQuery } from "../../api/api";

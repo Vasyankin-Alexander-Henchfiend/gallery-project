@@ -1,18 +1,7 @@
-import styles from './pagination.module.css'
+import styles from './pagination.module.scss'
+import { TPaginationProps } from './pagination.types';
 
-type TPaginationProps = {
-  onNextPageClick: () => void;
-  onPrevPageClick: () => void;
-  onNumberPageClick: (pageNumber: number) => void;
-  disable: {
-    left: boolean;
-    right: boolean;
-  };
-  nav?: {
-    current: number;
-    total: number;
-  };
-};
+
 
 export const Pagination = (props: TPaginationProps) => {
     const { nav = null, disable, onNextPageClick, onPrevPageClick, onNumberPageClick } = props;

@@ -1,4 +1,4 @@
-import styles from "./search.module.css";
+import styles from "./search.module.scss";
 
 interface InputProps extends React.HTMLProps<HTMLInputElement> {
   placeholder?: string;

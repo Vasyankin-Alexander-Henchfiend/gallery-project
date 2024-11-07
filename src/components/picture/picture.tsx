@@ -1,4 +1,4 @@
-import styles from "./picture.module.css";
+import styles from "./picture.module.scss";
 import { TPictureItem } from "./picture.types";
 import { BASE_URL } from "../../const/pictures";
 

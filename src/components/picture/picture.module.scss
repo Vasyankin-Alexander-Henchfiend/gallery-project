@@ -26,24 +26,24 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    text-transform: uppercase;
+
+    .name {
+        margin: 0;
+        font-family: 'Cormorant SC';
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 19.38px;
+        color: rgba(18, 18, 18, 1);
+    }
+
+    .date {
+        margin: 0;
+        font-family: 'Cormorant SC';
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 14.52px;
+        color: rgba(155, 75, 75, 1);
+    }
 }
 
-.name {
-    margin: 0;
-    font-family: 'Cormorant SC';
-    text-transform: uppercase;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 19.38px;
-    color: rgba(18, 18, 18, 1);
-}
-
-.date {
-    margin: 0;
-    font-family: 'Cormorant SC';
-    text-transform: uppercase;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 14.52px;
-    color: rgba(155, 75, 75, 1);
-}

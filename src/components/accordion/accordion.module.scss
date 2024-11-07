@@ -3,19 +3,16 @@
     text-transform: uppercase;
 }
 
-.icon-plus {
-    background-image: url(../app/assets/images/plus-icon-size=Default.svg);
+.icon {
     height: 16px;
     width: 16px;
     background-position: center;
+    background-image: url(../app/assets/images/plus-icon-size=Default.svg);
+    &-open {
+        background-image: url(../app/assets/images/minus-icon-size=Default.svg);
+    }
 }
 
-.icon-minus {
-    background-image: url(../app/assets/images/minus-icon-size=Default.svg);
-    height: 16px;
-    width: 16px;
-    background-position: center;
-}
 
 .button {
     width: 320px;

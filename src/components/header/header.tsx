@@ -1,4 +1,4 @@
-import styles from './header.module.css';
+import styles from './header.module.scss';
 import logo from "../app/assets/images/logo.svg";
 import themeIcon from '../app/assets/images/dark_icon.svg';
 import React from 'react';

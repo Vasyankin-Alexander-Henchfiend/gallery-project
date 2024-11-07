@@ -1,5 +1,8 @@
 .paginator {
     margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .arrow {
@@ -10,4 +13,6 @@
 
 .navigation {
     cursor: pointer;
+    border: none;
+    background: none;
 }

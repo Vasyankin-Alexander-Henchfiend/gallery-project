@@ -1,7 +1,7 @@
 import { Accordion } from "../accordion/accordion";
 import { Header } from "../header/header";
 import { Main } from "../main/main";
-import styles from "./app.module.css";
+import styles from "./app.module.scss";
 
 function App() {
   const array = ["Федот", "Петруха", "Алексашка"];
@@ -16,13 +16,11 @@ function App() {
         </button>
         <Accordion
           title={"Artist"}
-          type={"text"}
           placeholder={"Select the artist"}
           itemArray={array}
         />
         <Accordion
           title={"Location"}
-          type={"text"}
           placeholder={"Select the location"}
           itemArray={array}
         />
