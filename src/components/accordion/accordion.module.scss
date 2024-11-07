@@ -1,12 +1,13 @@
+@use '../app/styles/index';
+
 .title {
-    font-family: "Cormorant SC";
-    text-transform: uppercase;
+    @extend %header-big;
     margin: 0;
 }
 .fieldset {
     border: none;
     .input {
-        color: aqua;
+        @extend %paragraph-base-light;
 
     }
     .datalist {

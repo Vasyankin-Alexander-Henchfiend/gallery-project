@@ -1,4 +1,4 @@
-@import url(../app/styles/index.scss);
+@use '../app/styles/index';
 
 .picture-container {
     width: 392px;
@@ -6,44 +6,37 @@
     display: flex;
     flex-direction: column;
     position: relative;
-}
-
-.image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.discription-container {
-    width: 300px;
-    height: 82px;
-    padding: 20px;
-    box-sizing: border-box;
-    position: absolute;
-    background-color: rgba(255, 255, 255, 1);
-    bottom: 0;
-    left: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    text-transform: uppercase;
-
-    .name {
-        margin: 0;
-        font-family: 'Cormorant SC';
-        font-size: 16px;
-        font-weight: 500;
-        line-height: 19.38px;
-        color: rgba(18, 18, 18, 1);
+    .image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
-
-    .date {
-        margin: 0;
-        font-family: 'Cormorant SC';
-        font-size: 12px;
-        font-weight: 700;
-        line-height: 14.52px;
-        color: rgba(155, 75, 75, 1);
+    .discription-container {
+        width: 300px;
+        height: 82px;
+        padding: 20px 0 20px 20px;
+        box-sizing: border-box;
+        position: absolute;
+        background-color: index.$primary-white;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    
+        .name {
+            @extend %header-big;
+            margin: 0;
+            color: index.$primary-black;
+        }
+    
+        .date {
+            @extend %caption-bold-uppercase-big;
+            margin: 0;
+            color: index.$accent-red;
+        }
     }
 }
+
+
 

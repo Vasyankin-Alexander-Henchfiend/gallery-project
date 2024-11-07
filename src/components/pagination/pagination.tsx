@@ -36,7 +36,7 @@ export const Pagination = (props: TPaginationProps) => {
           pageNumbers(nav.total).map((item, index) => {
             return (
               <button onClick={() => handleNumberPageClick(item)}  key={index} className={styles.navigation}>
-                <span>{item}</span>
+                <span className={styles.number}>{item}</span>
               </button>
             );
           })

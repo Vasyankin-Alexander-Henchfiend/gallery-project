@@ -1,1 +1,75 @@
-@import url(../assets/fonts/index.scss);
+@use "../assets/fonts/fonts.scss";
+
+$primary-white: rgba(255, 255, 255, 1);
+$primary-black: rgba(18, 18, 18, 1);
+$primary-light-gray: rgba(222, 222, 222, 1);
+$primary-dark-gray: rgba(87, 87, 87, 1);
+
+$secondary-white: rgba(252, 252, 252, 1);
+$secondary-black: rgba(26, 24, 24, 1);
+$secondary-gray: rgba(156, 156, 156, 1);
+
+$accent-red: rgba(155, 75, 75, 1);
+$accent-gold: rgba(171, 137, 86, 1);
+
+
+%header-big {
+    font: {
+        family: "Cormorant SC";
+        size: 16px;
+        weight: 500;
+    }
+    line-height: 19.38px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+%header-small {
+    @extend %header-big;
+    font-size: 12px;
+    line-height: 14.53px;
+}
+
+%paragraph-big-light {
+    font: {
+        family: "Inter";
+        size: 16px;
+        weight: 300;
+    }
+    line-height: 22.4px;
+    text-align: left;
+}
+
+%paragraph-big-medium {
+    @extend %paragraph-big-light;
+    font-weight: 500;
+}
+
+%paragraph-base-light {
+    @extend %paragraph-big-light;
+    font-size: 14px;
+    line-height: 19.6px;
+}
+
+%paragraph-small-light {
+    @extend %paragraph-big-light;
+    font-size: 12px;
+    line-height: 16.8px;
+}
+
+%caption-bold-uppercase-big {
+    font: {
+        family: "Inter";
+        size: 12px;
+        weight: 700;
+    }
+    line-height: 14.52px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+%caption-bold-uppercase-small {
+    @extend %caption-bold-uppercase-big;
+    font-size: 8px;
+    line-height: 9.68px;
+}

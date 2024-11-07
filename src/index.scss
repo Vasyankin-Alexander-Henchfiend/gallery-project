@@ -1,6 +1,9 @@
+@use './components/app/styles/index';
+
 #root {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: index.$primary-white;
 }

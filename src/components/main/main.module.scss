@@ -1,15 +1,15 @@
 .main {
     width: 100%;
     display: block;
+    .gallery {
+        margin-top: 20px;
+        max-width: 1240px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 32px;
+    }
 }
 
-.gallery {
-    margin-top: 20px;
-    max-width: 1240px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 32px;
-}
 
 

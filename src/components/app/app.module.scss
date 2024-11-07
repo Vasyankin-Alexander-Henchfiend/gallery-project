@@ -1,4 +1,4 @@
-@import url(../app/styles/index.scss);
+@use '../app/styles/index';
 
 .app {
     width: 100%;
@@ -14,7 +14,7 @@
     max-width: 492px;
     position: absolute;
     right: 0;
-    background-color: rgba(252, 252, 252, 1);
+    background-color: index.$secondary-white;
     padding: 60px 40px 193px;
     box-sizing: border-box;
 }

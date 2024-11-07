@@ -1,18 +1,22 @@
+@use '../app/styles/index';
+
 .paginator {
     margin-top: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
+    .arrow {
+        border: none;
+        background-color: index.$primary-white;
+        cursor: pointer;
+    }
+    .navigation {
+        cursor: pointer;
+        border: none;
+        background: none;
+        .number {
+            @extend %paragraph-big-medium;
+        }
+    }
 }
 
-.arrow {
-    border: none;
-    background-color: rgb(255, 255, 255);
-    cursor: pointer;
-}
-
-.navigation {
-    cursor: pointer;
-    border: none;
-    background: none;
-}

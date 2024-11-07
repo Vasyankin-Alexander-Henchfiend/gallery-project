@@ -1,3 +1,5 @@
+@use '../app/styles/index';
+
 .header {
     width: 100%;
     max-width: 1240px;
@@ -6,24 +8,23 @@
     justify-content: space-between;
     align-items: baseline;
     margin: 28px 0;
+    .logo {
+        width: 91px;
+        height: 20px;
+    }
+    .theme-icon-wrapper {
+        width: 40px;
+        height: 40px;
+        background-color: index.$secondary-white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        .theme-icon {
+            width: 24px;
+            height: 24px;
+        }
+    }
 }
 
-.logo {
-    width: 91px;
-    height: 20px;
-}
 
-.theme-icon {
-    width: 24px;
-    height: 24px;
-}
-
-.theme-icon-wrapper {
-    width: 40px;
-    height: 40px;
-    background-color: rgba(252, 252, 252, 1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-}
