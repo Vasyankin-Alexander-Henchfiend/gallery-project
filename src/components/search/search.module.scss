@@ -30,12 +30,8 @@
     
             &::-webkit-search-cancel-button {
                 -webkit-appearance: none;
-                background-image: url(../app/assets/images/close-icon-size=small.svg);
-                width: 8px;
-                height: 8px;
-                background-position: center;
-                background-repeat: no-repeat;
             }
+
         }
     .filter {
         &-button {
