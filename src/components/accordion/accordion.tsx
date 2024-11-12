@@ -20,7 +20,7 @@ export const Accordion: React.FC<IAccordionProps> = ({ title, type, placeholder,
           className={
             !open ? styles.icon : `${styles.icon} ${styles[`icon-open`]}`
           }
-        ></i>
+        />
       </button>
       {open ? (
         <fieldset className={styles.fieldset}>
@@ -28,7 +28,7 @@ export const Accordion: React.FC<IAccordionProps> = ({ title, type, placeholder,
             type={type}
             placeholder={placeholder}
             className={styles.input}
-            list=""
+            list="list"
           />
           <datalist id="list" role="listbox" className={styles.datalist}>
             {itemArray.map((item, index) => (

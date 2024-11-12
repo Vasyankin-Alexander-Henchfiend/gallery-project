@@ -5,8 +5,8 @@ interface InputProps extends React.HTMLProps<HTMLInputElement> {
 }
 
 export const Search: React.FC<InputProps> = ({
-  placeholder = "Painting title",
-  type = "text",
+  placeholder = "",
+  type = "search",
   ...rest
 }) => {
   return (
@@ -18,7 +18,7 @@ export const Search: React.FC<InputProps> = ({
         {...rest}
       />
       <button className={styles[`filter-button`]}>
-        <i className={styles[`filter-icon`]} ></i>
+        <i className={styles[`filter-icon`]} />
       </button>
     </div>
   );

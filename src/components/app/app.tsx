@@ -12,7 +12,7 @@ function App() {
       <Main />
       <div className={styles.modal}>
         <button className={styles[`close-button`]}>
-          <i className={styles[`close-icon`]} ></i>
+          <i className={styles[`close-icon`]} />
         </button>
         <Accordion
           type="text"
@@ -26,7 +26,12 @@ function App() {
           placeholder={"Select the location"}
           itemArray={array}
         />
-        <div>третий инпут</div>
+        <Accordion
+          type="text"
+          title={"Years"}
+          placeholder={"Select the location"}
+          itemArray={array}
+        />
       </div>
     </div>
   );

@@ -2,20 +2,41 @@
 
 .search {
     display: flex;
-    align-items: center;
-    justify-content: end;
-    .input {
-        background-image: url(../app/assets/images/search_icon.svg);
-        background-position: 16px;
-        background-repeat: no-repeat;
-        width: 336px;
-        height: 36px;
-        border-radius: 4px;
-        border: 1px solid index.$primary-light-gray;
-        padding: 8px 10px 8px 48px;
-        box-sizing: border-box;
-        margin-right: 20px;
-    }
+        align-items: center;
+        justify-content: end;
+    
+        .input {
+            background-image: url(../app/assets/images/search_icon.svg);
+            background-position: 16px;
+            background-repeat: no-repeat;
+            width: 336px;
+            height: 36px;
+            border-radius: 4px;
+            border: 1px solid index.$primary-light-gray;
+            padding: 8px 10px 8px 48px;
+            box-sizing: border-box;
+            margin-right: 20px;
+            color: index.$primary-dark-gray;
+            caret-color: index.$primary-dark-gray;
+
+            &::placeholder {
+                color: index.$secondary-gray;
+            }
+
+            &:focus {
+                outline: none !important;
+                border-color: index.$primary-dark-gray;
+            }
+    
+            &::-webkit-search-cancel-button {
+                -webkit-appearance: none;
+                background-image: url(../app/assets/images/close-icon-size=small.svg);
+                width: 8px;
+                height: 8px;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+        }
     .filter {
         &-button {
             width: 36px;

@@ -55,9 +55,10 @@ export const Main: React.FC = () => {
 
   return (
     <main className={styles.main}>
-      <Search 
-      value={searchQuery}
-      onChange={onChange}
+      <Search
+        placeholder="Painting title"
+        value={searchQuery}
+        onChange={onChange}
       />
       <section className={styles.gallery}>
         {error ? (

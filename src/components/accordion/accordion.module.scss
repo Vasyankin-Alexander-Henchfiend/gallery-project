@@ -3,17 +3,20 @@
 .title {
     @extend %header-big;
     margin: 0;
-}
-.fieldset {
-    border: none;
-    .input {
-        @extend %paragraph-base-light;
-
     }
-    .datalist {
-        color: antiquewhite;
+    
+    .fieldset {
+        border: none;
+    
+        .input {
+            @extend %paragraph-base-light;
+            color: index.$primary-dark-gray;
+    
+            &::placeholder {
+                color: index.$secondary-gray;
+            }
+        }
     }
-}
 
 .icon {
     height: 16px;
