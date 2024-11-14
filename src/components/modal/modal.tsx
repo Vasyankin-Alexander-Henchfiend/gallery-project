@@ -8,7 +8,6 @@ interface IModal {
 }
 
 export const Modal: React.FC<IModal> = ({ children, onClose }) => {
-  
   useEffect(() => {
     const closeByEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -20,14 +19,20 @@ export const Modal: React.FC<IModal> = ({ children, onClose }) => {
       document.removeEventListener("keydown", closeByEsc);
     };
   }, [onClose]);
-  
-    return (
-      <div className={styles.modal}>
+
+  return (
+    <div className={styles.modal}>
+      <div className={styles[`modal-content`]}>
         <button onClick={() => onClose()} className={styles[`close-button`]}>
           <i className={styles[`close-icon`]} />
         </button>
-        {children}
-        <ModalOverlay onClose={onClose} />
+        <div className={styles[`accordion-container`]}>{children}</div>
+        <div className={styles[`buttons-container`]}>
+          <button className={styles[`text-button`]}>show the results</button>
+          <button className={styles[`text-button`]}>clear</button>
+        </div>
       </div>
-    );
+      <ModalOverlay onClose={onClose} />
+    </div>
+  );
 }

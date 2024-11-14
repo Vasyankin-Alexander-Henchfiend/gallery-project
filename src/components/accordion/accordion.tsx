@@ -13,7 +13,7 @@ export const Accordion: React.FC<IAccordionProps> = ({ title, type, placeholder,
   const [open, setOpen] = useState(false)
 
   return (
-    <div>
+    <>
       <button className={styles.button} onClick={() => setOpen(!open)}>
         <h4 className={styles.title}>{title}</h4>
         <i
@@ -39,6 +39,6 @@ export const Accordion: React.FC<IAccordionProps> = ({ title, type, placeholder,
           </datalist>
         </fieldset>
       ) : null}
-    </div>
+    </>
   );
 };
