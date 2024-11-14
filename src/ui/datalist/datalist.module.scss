@@ -1,0 +1,63 @@
+.datalist {
+  margin: auto;
+  position: relative;
+  width: 400px;
+  color: #000;
+
+  &-input {
+    padding-left: 1em;
+    width: 100%;
+    height: 54px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    box-shadow: none;
+    border: 1px solid #ccc;
+    outline: 0;
+
+    &:focus {
+      border: 1px solid #aa0000;
+      outline: 0;
+    }
+  }
+  &-icon {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    transition: transform 0.2s ease;
+  }
+}
+
+#datalist.active #datalist-ul {
+    display: block;
+}
+
+.list {
+    display: none;
+    position: absolute;
+    margin: 5px 0 0 0;
+    padding: 0;
+    width: 100%;
+    max-height: 200px;
+    top: 100%;
+    left: 0;
+    list-style: none;
+    border-radius: 2px;
+    background: #fff;
+    overflow: hidden;
+    overflow-y: auto;
+    z-index: 100;
+
+    
+  li {
+    display: block;
+    text-align: left;
+    padding: 0.8em 1em 0.8em 1em;
+    color: #999;
+    cursor: pointer;
+
+    &:hover {
+      background: #4e00f0;
+      color: #f00;
+    }
+  }
+}

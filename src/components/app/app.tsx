@@ -23,7 +23,7 @@ function App() {
             placeholder={"Select the artist"}
             itemArray={array}
           />
-          <Accordion
+          {/* <Accordion
             type="text"
             title={"Location"}
             placeholder={"Select the location"}
@@ -34,7 +34,7 @@ function App() {
             title={"Years"}
             placeholder={"Select the location"}
             itemArray={array}
-          />
+          /> */}
         </Modal>
       )}
     </div>

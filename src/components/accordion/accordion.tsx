@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "../accordion/accordion.module.scss";
+import { InputWithDataList } from "../../ui/datalist/datalist";
 
 interface IAccordionProps {
   title: string;
@@ -22,7 +23,7 @@ export const Accordion: React.FC<IAccordionProps> = ({ title, type, placeholder,
           }
         />
       </button>
-      {open ? (
+      {/* {open ? (
         <fieldset className={styles.fieldset}>
           <input
             type={type}
@@ -38,7 +39,14 @@ export const Accordion: React.FC<IAccordionProps> = ({ title, type, placeholder,
             ))}
           </datalist>
         </fieldset>
-      ) : null}
+      ) : null} */}
+      {open && (
+        <InputWithDataList
+          placeholder={placeholder}
+          type={type}
+          data={itemArray}
+        />
+      )}
     </>
   );
 };
