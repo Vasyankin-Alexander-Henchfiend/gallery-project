@@ -2,11 +2,13 @@ import styles from "./search.module.scss";
 
 interface InputProps extends React.HTMLProps<HTMLInputElement> {
   placeholder?: string;
+  filterIconClick: () => void
 }
 
 export const Search: React.FC<InputProps> = ({
   placeholder = "",
   type = "search",
+  filterIconClick,
   ...rest
 }) => {
   return (
@@ -17,7 +19,7 @@ export const Search: React.FC<InputProps> = ({
         className={styles.input}
         {...rest}
       />
-      <button className={styles[`filter-button`]}>
+      <button onClick={filterIconClick} className={styles[`filter-button`]}>
         <i className={styles[`filter-icon`]} />
       </button>
     </div>

@@ -6,6 +6,8 @@ import { useGetDataTotalQuery, useGetPageQuery } from "../../api/api";
 import { TPageLimit, TPicture } from "../types/types";
 import { Picture } from "../picture/picture";
 import { PICTURE_PER_PAGE } from "../../const/pictures";
+import { useAppDispatch } from "../../services/hooks/hooks";
+import { openModal } from "../../services/slices/modal";
 
 const getTotalPageCount = (rowCount: number): number =>
   Math.ceil(rowCount / PICTURE_PER_PAGE);
@@ -14,6 +16,7 @@ export const Main: React.FC = () => {
   const [page, setPage] = useState<number>(1);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [picturesTotal, setPicturesTotal] = useState<number>(0);
+  const dispatch = useAppDispatch();
 
   const query: TPageLimit = {
     _page: page,
@@ -59,6 +62,7 @@ export const Main: React.FC = () => {
         placeholder="Painting title"
         value={searchQuery}
         onChange={onChange}
+        filterIconClick={() => dispatch(openModal())}
       />
       <section className={styles.gallery}>
         {error ? (
