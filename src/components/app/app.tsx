@@ -8,6 +8,8 @@ import styles from "./app.module.scss";
 
 function App() {
   const array = ["Федот", "Петруха", "Алексашка"];
+  const array2 = ["Федот", "Петруха", "Алексашка"];
+  const array3 = ["Федот", "Петруха", "Алексашка"];
   const modal = useAppSelector((store) => store.modal.open);
   const dispatch = useAppDispatch();
 
@@ -23,18 +25,18 @@ function App() {
             placeholder={"Select the artist"}
             itemArray={array}
           />
-          {/* <Accordion
+          <Accordion
             type="text"
             title={"Location"}
             placeholder={"Select the location"}
-            itemArray={array}
+            itemArray={array2}
           />
           <Accordion
             type="text"
             title={"Years"}
             placeholder={"Select the location"}
-            itemArray={array}
-          /> */}
+            itemArray={array3}
+          />
         </Modal>
       )}
     </div>

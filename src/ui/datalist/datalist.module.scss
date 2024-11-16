@@ -19,42 +19,61 @@
       outline: 0;
     }
   }
-  &-icon {
+  .icon {
+    background-image: url(../../components/app/assets/images/expand_icon.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 12px;
+    height: 7px;
     position: absolute;
     right: 20px;
     top: 20px;
     transition: transform 0.2s ease;
+    cursor: pointer;
+  }
+  &.hidden {
+    .list {
+      visibility: hidden;
+    }
+    .icon {
+      transform: rotate(0deg);
+    }
+  }
+  &.visible {
+    .list {
+      visibility: visible;
+    }
+    .icon {
+      transform: rotate(180deg);
+    }
   }
 }
 
-#datalist.active #datalist-ul {
-    display: block;
-}
+
+
 
 .list {
-    display: none;
-    position: absolute;
-    margin: 5px 0 0 0;
-    padding: 0;
-    width: 100%;
-    max-height: 200px;
-    top: 100%;
-    left: 0;
-    list-style: none;
-    border-radius: 2px;
-    background: #fff;
-    overflow: hidden;
-    overflow-y: auto;
-    z-index: 100;
-
-    
+  position: absolute;
+  margin: 5px 0 0 0;
+  padding: 0;
+  width: 100%;
+  max-height: 200px;
+  top: 100%;
+  left: 0;
+  list-style: none;
+  border-radius: 2px;
+  background: #fff;
+  overflow: hidden;
+  overflow-y: auto;
+  z-index: 100;
+  
   li {
     display: block;
     text-align: left;
     padding: 0.8em 1em 0.8em 1em;
     color: #999;
     cursor: pointer;
-
+    
     &:hover {
       background: #4e00f0;
       color: #f00;

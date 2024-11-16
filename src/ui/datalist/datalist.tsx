@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import styles from './datalist.module.scss';
 
 interface IInputWithDataList {
@@ -7,119 +7,45 @@ interface IInputWithDataList {
   data: string[]
 }
 
-// interface IDataList {
-//     containerId: string
-//     inputId: string
-//     listId: string
-//     options: string[]
-// }
-
-class DataList {
-  inputId: string;
-  containerId: string;
-  listId: string;
-  options: string[];
-  constructor(containerId: string, inputId: string, listId: string, options: string[]) {
-    this.containerId = containerId;
-    this.inputId = inputId;
-    this.listId = listId;
-    this.options = options;
-  }
-
-  create(filter = "") {
-    const list = document.getElementById(this.listId);
-    const filterOptions = this.options.filter(
-      (d: string) => filter === "" || d.includes(filter)
-    );
-    if (list !== null) {
-        if (filterOptions.length === 0) {
-          list.classList.remove("active");
-        } else {
-          list.classList.add("active");
-        }
-    
-        list.innerHTML = filterOptions
-          .map((o: string) => `<li id=${o}>${o}</li>`)
-          .join("");
-    }
-  }
-
-  addListeners(datalist: DataList) {
-    const container = document.getElementById(this.containerId);
-    const input = document.getElementById(this.inputId);
-    const list = document.getElementById(this.listId);
-    console.log(container)
-    if(container !== null) {
-        container.addEventListener("click", (e) => {
-          if (e.target.id === this.inputId) {
-            container.classList.toggle("active");
-            console.log("точка 1")
-          } else if (e.target.id === "datalist-icon") {
-            container.classList.toggle("active");
-            input.focus();
-          }
-        });
-    }
-    if(input !==null && container !== null) {
-        input.addEventListener("input", function () {
-          if (!container.classList.contains("active")) {
-            container.classList.add("active");
-          }
-    
-          datalist.create(input.value);
-          console.log("точка 2")
-        });
-
-    }
-    if(list !== null && input !== null && container !== null) {
-
-        list.addEventListener("click", function (e) {
-          if (e.target.nodeName.toLocaleLowerCase() === "li") {
-            input.value = e.target.innerText;
-            container.classList.remove("active");
-          }
-        });
-    }
-    }
-  }
-
-
-
-
 export const InputWithDataList: React.FC<IInputWithDataList> = ({
-    placeholder,
-    type,
-    data,
-    ...rest
+  placeholder,
+  type,
+  data,
+  ...rest
 }) => {
-    
-    const datalist = useRef(new DataList(
-      "datalist",
-      "datalist-input",
-      "datalist-ul",
-      data
-    ))
+  enum ListState {
+    Hidden = "hidden",
+    Visible = "visible",
+  }
 
-    const getDataList = useCallback(() => {
-        datalist.current.create()
-        datalist.current.addListeners(datalist)
-    }, [datalist])
+  const [listState, setListState] = useState(ListState.Hidden);
+  const [inputValue, setInputValue] = useState<string>('');
 
-    useEffect(() => {
-        getDataList()
-    }, [getDataList])
+  const listSeter = () => {
+    if (listState === ListState.Hidden) {
+      setListState(ListState.Visible);
+    } else setListState(ListState.Hidden);
+
+  };
 
   return (
-    <div id="datalist" className={styles.datalist}>
+    <div id="datalist" className={`${styles.datalist} ${styles[listState]}`}>
       <input
-        id="datalist-input"
+        onClick={() => setListState(ListState.Visible)}
+        // onBlur={() => setListState(ListState.Hidden)}
         className={styles[`datalist-input`]}
         type={type}
         placeholder={placeholder}
+        value={inputValue}
+        onChange={(event) => setInputValue(event.target.value)}
         {...rest}
       />
-      <i id="datalist-icon" className={styles[`datalist-icon`]} />
-      <ul id="datalist-ul" className={styles.list}></ul>
+      <i className={styles.icon} onClick={() => listSeter()} />
+      <ul className={styles.list}>
+        {data.map((item) => (
+          <li key={item} onClick={() => setInputValue(item)}>{item}</li>
+        ))}
+      </ul>
     </div>
   );
 };
