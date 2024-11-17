@@ -20,13 +20,12 @@ export const InputWithDataList: React.FC<IInputWithDataList> = ({
   }
 
   const [listState, setListState] = useState(ListState.Hidden);
-  const [inputValue, setInputValue] = useState<string>('');
+  const [inputValue, setInputValue] = useState<string>("");
 
   const listSeter = () => {
     if (listState === ListState.Hidden) {
       setListState(ListState.Visible);
     } else setListState(ListState.Hidden);
-
   };
 
   return (
@@ -43,10 +42,17 @@ export const InputWithDataList: React.FC<IInputWithDataList> = ({
       <i className={styles.icon} onClick={() => listSeter()} />
       <ul className={styles.list}>
         {data.map((item) => (
-          <li key={item} onClick={() => setInputValue(item)}>{item}</li>
+          <li key={item} onClick={() => setInputValue(item)}>
+            {item}
+          </li>
         ))}
       </ul>
-      {listState === ListState.Visible && <ModalOverlay extraClass={styles.overlay} onClose={() => setListState(ListState.Hidden)} />}
+      {listState === ListState.Visible && (
+        <ModalOverlay
+          extraClass={styles.overlay}
+          onClose={() => setListState(ListState.Hidden)}
+        />
+      )}
     </div>
   );
 };

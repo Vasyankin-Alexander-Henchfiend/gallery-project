@@ -6,9 +6,20 @@
     align-items: center;
     justify-content: center;
     .arrow {
-        border: none;
-        background-color: index.$primary-white;
-        cursor: pointer;
+        &-button {
+            &:hover {
+                background-color: index.$primary-black-hagh- opacity;
+                border-radius: 4px;
+            }
+        }
+        &-icon {
+            background-image: url(../app/assets/images/simple_arrow_icon.svg);
+            width: 7.6px;
+            height: 11.8px;
+            &-left {
+                transform: rotate(180deg);
+            }
+        }
     }
     .navigation {
         cursor: pointer;

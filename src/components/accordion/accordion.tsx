@@ -23,23 +23,6 @@ export const Accordion: React.FC<IAccordionProps> = ({ title, type, placeholder,
           }
         />
       </button>
-      {/* {open ? (
-        <fieldset className={styles.fieldset}>
-          <input
-            type={type}
-            placeholder={placeholder}
-            className={styles.input}
-            list="list"
-          />
-          <datalist id="list" role="listbox" className={styles.datalist}>
-            {itemArray.map((item, index) => (
-              <option key={index} value={item}>
-                {item}
-              </option>
-            ))}
-          </datalist>
-        </fieldset>
-      ) : null} */}
       {open && (
         <InputWithDataList
           placeholder={placeholder}

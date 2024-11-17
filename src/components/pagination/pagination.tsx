@@ -1,3 +1,4 @@
+import { Button } from '../../ui/button/button';
 import styles from './pagination.module.scss'
 import { TPaginationProps } from './pagination.types';
 
@@ -24,31 +25,32 @@ export const Pagination = (props: TPaginationProps) => {
 
      return (
        <div className={styles.paginator}>
-         <button
-           className={styles.arrow}
-           type="button"
+         <Button
+           extraClassButton={styles[`arrow-button`]}
+           extraClassIcon={`${styles[`arrow-icon`]} ${
+             styles[`arrow-icon-left`]
+           }`}
            onClick={handlePrevPageClick}
            disabled={disable.left}
-         >
-           {"<"}
-         </button>
-         {nav && (
-          pageNumbers(nav.total).map((item, index) => {
-            return (
-              <button onClick={() => handleNumberPageClick(item)}  key={index} className={styles.navigation}>
-                <span className={styles.number}>{item}</span>
-              </button>
-            );
-          })
-         )}
-         <button
-           className={styles.arrow}
-           type="button"
+         />
+         {nav &&
+           pageNumbers(nav.total).map((item, index) => {
+             return (
+               <button
+                 onClick={() => handleNumberPageClick(item)}
+                 key={index}
+                 className={styles.navigation}
+               >
+                 <span className={styles.number}>{item}</span>
+               </button>
+             );
+           })}
+         <Button
+           extraClassButton={styles[`arrow-button`]}
+           extraClassIcon={styles[`arrow-icon`]}
            onClick={handleNextPageClick}
            disabled={disable.right}
-         >
-           {">"}
-         </button>
+         />
        </div>
      );
 }
