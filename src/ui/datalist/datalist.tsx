@@ -33,7 +33,6 @@ export const InputWithDataList: React.FC<IInputWithDataList> = ({
     <div id="datalist" className={`${styles.datalist} ${styles[listState]}`}>
       <input
         onClick={() => setListState(ListState.Visible)}
-        // onBlur={() => setListState(ListState.Hidden)}
         className={styles[`datalist-input`]}
         type={type}
         placeholder={placeholder}
