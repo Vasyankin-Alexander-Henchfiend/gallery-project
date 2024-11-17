@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styles from './datalist.module.scss';
+import { ModalOverlay } from '../../components/modal/modal-overlay/modal-overlay';
 
 interface IInputWithDataList {
   placeholder: string;
@@ -46,6 +47,7 @@ export const InputWithDataList: React.FC<IInputWithDataList> = ({
           <li key={item} onClick={() => setInputValue(item)}>{item}</li>
         ))}
       </ul>
+      {listState === ListState.Visible && <ModalOverlay extraClass={styles.overlay} onClose={() => setListState(ListState.Hidden)} />}
     </div>
   );
 };
