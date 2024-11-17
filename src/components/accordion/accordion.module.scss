@@ -37,7 +37,7 @@
     width: 16px;
     background-position: center;
     background-image: url(../app/assets/images/plus-icon-size=Default.svg);
-    transition: transform 0.1s ease;
+    transition: transform 0.3s ease;
     &-open {
         transform: rotate(360deg);
         background-image: url(../app/assets/images/minus-icon-size=Default.svg);

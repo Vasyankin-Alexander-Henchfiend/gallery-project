@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import styles from './datalist.module.scss';
-import { ModalOverlay } from '../../components/modal/modal-overlay/modal-overlay';
+import { useState } from "react";
+import styles from "./datalist.module.scss";
+import { ModalOverlay } from "../../components/modal/modal-overlay/modal-overlay";
 
 interface IInputWithDataList {
   placeholder: string;
   type: string;
-  data: string[]
+  data: string[];
 }
 
 export const InputWithDataList: React.FC<IInputWithDataList> = ({

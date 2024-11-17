@@ -16,3 +16,8 @@ export type TPageLimit = TQuery&{
   _page: number;
   _limit: number;
 };
+
+export enum ElementStates {
+  Closed = "closed",
+  Open = "open",
+}

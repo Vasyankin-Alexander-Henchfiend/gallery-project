@@ -3,7 +3,8 @@ import { closeModal } from "../../services/slices/modal";
 import { Accordion } from "../accordion/accordion";
 import { Header } from "../header/header";
 import { Main } from "../main/main";
-import { Modal } from "../modal/modal";
+import { ElementStates, Modal } from "../modal/modal";
+
 import styles from "./app.module.scss";
 
 function App() {
@@ -17,8 +18,7 @@ function App() {
     <div className={styles.app}>
       <Header />
       <Main />
-      {modal && (
-        <Modal onClose={() => dispatch(closeModal())}>
+        <Modal onClose={() => dispatch(closeModal())} state={modal ? ElementStates.Open : ElementStates.Closed}>
           <Accordion
             type="text"
             title={"Artist"}
@@ -38,7 +38,6 @@ function App() {
             itemArray={array3}
           />
         </Modal>
-      )}
     </div>
   );
 }

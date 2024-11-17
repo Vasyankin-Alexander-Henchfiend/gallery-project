@@ -5,13 +5,21 @@
     width: 100vw;
     max-width: 492px;
     position: fixed;
-    right: 0;
     background-color: index.$secondary-white;
+    transition: right 0.3s ease;
+    
+    &.closed {
+        right: -492px;
+    }
+
+    &.open {
+        right: 0;
+    }
 
     .button {
         padding: 2px;
         display: flex;
-        position: fixed;
+        position: absolute;
         top: 60px;
         right: 100px;
 

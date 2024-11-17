@@ -8,35 +8,14 @@
     align-items: center;
 }
 
-.modal {
-    height: 100%;
-    width: 100%;
-    max-width: 492px;
-    position: fixed;
-    right: 0;
-    background-color: index.$secondary-white;
-    padding: 60px 40px 193px;
-    box-sizing: border-box;
-    visibility: hidden;
-}
-
-.close {
-    &-icon {
-        background-image: url(../app/assets/images/close-icon-size=default.svg);
-        background-position: center;
-        background-repeat: no-repeat;
-        width: 16px;
-        height: 16px;
-    }
-    &-button {
-        width: 20px;
-        height: 20px;
-        border: none;
-        background: none;
-        box-sizing: border-box;
-        padding: 2px;
-        display: flex;
-    }
-}
-
-
+// .modal {
+//     height: 100%;
+//     width: 100%;
+//     max-width: 492px;
+//     position: fixed;
+//     right: 0;
+//     background-color: index.$secondary-white;
+//     padding: 60px 40px 193px;
+//     box-sizing: border-box;
+//     visibility: hidden;
+// }

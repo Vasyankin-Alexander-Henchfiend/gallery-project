@@ -20,9 +20,6 @@ export const Search: React.FC<InputProps> = ({
         className={styles.input}
         {...rest}
       />
-      {/* <button onClick={filterIconClick} className={styles[`filter-button`]}>
-        <i className={styles[`filter-icon`]} />
-      </button> */}
       <Button extraClassButton={styles[`filter-button`]} extraClassIcon={styles[`filter-icon`]} onClick={filterIconClick} />
     </div>
   );
