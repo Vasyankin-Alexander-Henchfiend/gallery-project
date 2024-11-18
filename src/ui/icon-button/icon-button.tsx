@@ -1,13 +1,13 @@
-import styles from "./button.module.scss";
+import styles from "./icon-button.module.scss";
 
-interface IButton {
+interface IconButton {
   extraClassButton?: string;
   extraClassIcon?: string;
   onClick: () => void;
   disabled?: boolean;
 }
 
-export const Button: React.FC<IButton> = ({
+export const IconButton: React.FC<IconButton> = ({
   extraClassButton = "",
   extraClassIcon = "",
   onClick,

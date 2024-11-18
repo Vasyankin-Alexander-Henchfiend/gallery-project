@@ -64,7 +64,7 @@ export const Main: React.FC = () => {
         onChange={onChange}
         filterIconClick={() => dispatch(openModal())}
       />
-      <section className={styles.gallery}>
+      <ul className={styles.gallery}>
         {error ? (
           <>Oh no, there was an error</>
         ) : isLoading ? (
@@ -74,7 +74,7 @@ export const Main: React.FC = () => {
             return <Picture item={item} key={index} />;
           })
         ) : null}
-      </section>
+      </ul>
       <Pagination
         onNextPageClick={handleNextPageClick}
         onPrevPageClick={handlePrevPageClick}

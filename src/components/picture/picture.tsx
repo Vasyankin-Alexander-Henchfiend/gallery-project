@@ -14,6 +14,10 @@ export const Picture = ({ item }: TPictureItem) => {
         <h2 className={styles.name}>{item.name}</h2>
         <p className={styles.date}>{item.created}</p>
       </div>
+      <div className={styles[`discription-container`]}>
+        <h2 className={styles.name}>{item.authorId}</h2>
+        <p className={styles.date}>{item.locationId}</p>
+      </div>
     </li>
   );
 };

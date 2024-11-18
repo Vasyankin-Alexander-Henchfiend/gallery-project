@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect } from "react";
 import styles from "./modal.module.scss";
-import { Button } from "../../ui/button/button";
+import { IconButton } from "../../ui/icon-button/icon-button";
 import { ElementStates } from "../types/types";
 import { ModalOverlay } from "./modal-overlay/modal-overlay";
 
@@ -30,7 +30,7 @@ export const Modal: React.FC<IModal> = ({
   return (
     <div className={`${styles.modal} ${styles[state]}`}>
       <div className={styles[`modal-content`]}>
-        <Button
+        <IconButton
           extraClassButton={styles.button}
           extraClassIcon={styles.icon}
           onClick={onClose}

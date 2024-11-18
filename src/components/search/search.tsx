@@ -1,9 +1,9 @@
-import { Button } from "../../ui/button/button";
+import { IconButton } from "../../ui/icon-button/icon-button";
 import styles from "./search.module.scss";
 
 interface InputProps extends React.HTMLProps<HTMLInputElement> {
   placeholder?: string;
-  filterIconClick: () => void
+  filterIconClick: () => void;
 }
 
 export const Search: React.FC<InputProps> = ({
@@ -20,7 +20,11 @@ export const Search: React.FC<InputProps> = ({
         className={styles.input}
         {...rest}
       />
-      <Button extraClassButton={styles[`filter-button`]} extraClassIcon={styles[`filter-icon`]} onClick={filterIconClick} />
+      <IconButton
+        extraClassButton={styles[`filter-button`]}
+        extraClassIcon={styles[`filter-icon`]}
+        onClick={filterIconClick}
+      />
     </div>
   );
 };

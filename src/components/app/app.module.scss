@@ -6,16 +6,5 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow: hidden;
 }
-
-// .modal {
-//     height: 100%;
-//     width: 100%;
-//     max-width: 492px;
-//     position: fixed;
-//     right: 0;
-//     background-color: index.$secondary-white;
-//     padding: 60px 40px 193px;
-//     box-sizing: border-box;
-//     visibility: hidden;
-// }
