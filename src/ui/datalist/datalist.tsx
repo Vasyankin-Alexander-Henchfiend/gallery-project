@@ -42,7 +42,7 @@ export const InputWithDataList: React.FC<IInputWithDataList> = ({
       <i className={styles.icon} onClick={() => listSeter()} />
       <ul className={styles.list}>
         {data?.map((item) => (
-          <li key={item} onClick={() => setInputValue(item)}>
+          <li key={item} onClick={() => setInputValue(item.toString())}>
             {item}
           </li>
         ))}
