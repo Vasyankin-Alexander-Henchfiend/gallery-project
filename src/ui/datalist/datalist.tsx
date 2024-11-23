@@ -5,7 +5,7 @@ import { ModalOverlay } from "../../components/modal/modal-overlay/modal-overlay
 interface IInputWithDataList {
   placeholder: string;
   type: string;
-  data: string[] | undefined;
+  data: (string | number)[] | undefined;
 }
 
 export const InputWithDataList: React.FC<IInputWithDataList> = ({

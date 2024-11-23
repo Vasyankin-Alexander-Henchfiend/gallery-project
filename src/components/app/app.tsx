@@ -1,10 +1,12 @@
 import { useGetAuthorsQuery, useGetLocationsQuery } from "../../api/api";
+import { getPureArray } from "../../const/pictures";
 import { useAppDispatch, useAppSelector } from "../../services/hooks/hooks";
 import { closeModal } from "../../services/slices/modal";
 import { Accordion } from "../accordion/accordion";
 import { Header } from "../header/header";
 import { Main } from "../main/main";
 import { ElementStates, Modal } from "../modal/modal";
+import { TAuthors, TLocations } from "../types/types";
 
 import styles from "./app.module.scss";
 
@@ -23,8 +25,8 @@ function App() {
   const { data: authors } = useGetAuthorsQuery(authorQuery);
   const { data: locations } = useGetLocationsQuery(locationQuery);
 
-  const authorsArray = authors?.map((item) => item.name);
-  const locationsArray = locations?.map((item) => item.location);
+  const authorsArray = getPureArray<TAuthors>(authors, "name");
+  const locationsArray = getPureArray<TLocations>(locations, "location");
 
   return (
     <div className={styles.app}>
@@ -47,11 +49,11 @@ function App() {
           itemArray={locationsArray}
         />
         <Accordion
-            type="text"
-            title={"Years"}
-            placeholder={"Select the location"}
-            itemArray={locationsArray}
-          />
+          type="text"
+          title={"Years"}
+          placeholder={"Select the location"}
+          itemArray={locationsArray}
+        />
       </Modal>
     </div>
   );

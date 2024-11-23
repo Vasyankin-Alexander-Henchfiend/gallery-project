@@ -5,12 +5,9 @@ import { Search } from "../search/search";
 import { useGetDataTotalQuery, useGetPageQuery } from "../../api/api";
 import { TPageLimit, TPicture } from "../types/types";
 import { Picture } from "../picture/picture";
-import { PICTURE_PER_PAGE } from "../../const/pictures";
+import { getTotalPageCount, PICTURE_PER_PAGE } from "../../const/pictures";
 import { useAppDispatch } from "../../services/hooks/hooks";
 import { openModal } from "../../services/slices/modal";
-
-const getTotalPageCount = (rowCount: number): number =>
-  Math.ceil(rowCount / PICTURE_PER_PAGE);
 
 export const Main: React.FC = () => {
   const [page, setPage] = useState<number>(1);
@@ -27,12 +24,14 @@ export const Main: React.FC = () => {
   const { data: picturesSum } = useGetDataTotalQuery(query);
   const { data, error, isLoading } = useGetPageQuery(query);
 
+  // Получаем общее количество картин, для отображения пагинации
   useEffect(() => {
     if (picturesSum) {
       return setPicturesTotal(picturesSum.length);
     }
   }, [data, picturesSum]);
 
+  // Получаем значение поля поиска по названию картины
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
   };
@@ -40,7 +39,9 @@ export const Main: React.FC = () => {
   const handleNextPageClick = useCallback(() => {
     const current = page;
     const next = current + 1;
-    const total = data ? getTotalPageCount(picturesTotal) : current;
+    const total = data
+      ? getTotalPageCount(picturesTotal, PICTURE_PER_PAGE)
+      : current;
 
     setPage(next <= total ? next : current);
   }, [page, data, picturesTotal]);
@@ -58,12 +59,14 @@ export const Main: React.FC = () => {
 
   return (
     <main className={styles.main}>
+      {/* Компонент Поле поиска по названию */}
       <Search
         placeholder="Painting title"
         value={searchQuery}
         onChange={onChange}
         filterIconClick={() => dispatch(openModal())}
       />
+      {/* Списко картин */}
       <ul className={styles.gallery}>
         {error ? (
           <>Oh no, there was an error</>
@@ -75,15 +78,19 @@ export const Main: React.FC = () => {
           })
         ) : null}
       </ul>
+      {/* Компонент пагинация для переключения страниц с картинами */}
       <Pagination
         onNextPageClick={handleNextPageClick}
         onPrevPageClick={handlePrevPageClick}
         onNumberPageClick={handleNumberPageClick}
         disable={{
           left: page === 1,
-          right: page === getTotalPageCount(picturesTotal),
+          right: page === getTotalPageCount(picturesTotal, PICTURE_PER_PAGE),
         }}
-        nav={{ current: page, total: getTotalPageCount(picturesTotal) }}
+        nav={{
+          current: page,
+          total: getTotalPageCount(picturesTotal, PICTURE_PER_PAGE),
+        }}
       />
     </main>
   );
