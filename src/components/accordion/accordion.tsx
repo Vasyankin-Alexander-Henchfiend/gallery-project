@@ -6,7 +6,7 @@ interface IAccordionProps {
   title: string;
   type: string;
   placeholder: string;
-  itemArray: string[]
+  itemArray: string[] | undefined
 }
 
 export const Accordion: React.FC<IAccordionProps> = ({ title, type, placeholder, itemArray }) => {

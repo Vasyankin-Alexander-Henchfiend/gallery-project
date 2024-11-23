@@ -5,7 +5,7 @@ import { ModalOverlay } from "../../components/modal/modal-overlay/modal-overlay
 interface IInputWithDataList {
   placeholder: string;
   type: string;
-  data: string[];
+  data: string[] | undefined;
 }
 
 export const InputWithDataList: React.FC<IInputWithDataList> = ({
@@ -41,7 +41,7 @@ export const InputWithDataList: React.FC<IInputWithDataList> = ({
       />
       <i className={styles.icon} onClick={() => listSeter()} />
       <ul className={styles.list}>
-        {data.map((item) => (
+        {data?.map((item) => (
           <li key={item} onClick={() => setInputValue(item)}>
             {item}
           </li>

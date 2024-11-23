@@ -2,7 +2,7 @@ import { createApi } from "@reduxjs/toolkit/query/react";
 import type { BaseQueryFn } from "@reduxjs/toolkit/query";
 import axios from "axios";
 import type { AxiosRequestConfig, AxiosError } from "axios";
-import { TPageLimit, TPicture, TQuery } from "../components/types/types";
+import { TAuthors, TLocations, TPageLimit, TPicture, TQuery } from "../components/types/types";
 import { BASE_URL } from "../const/pictures";
 
 const axiosBaseQuery =
@@ -47,13 +47,27 @@ export const api = createApi({
   endpoints(build) {
     return {
       getDataTotal: build.query<TPicture[], TQuery>({
-        query: (query: TQuery) => ({ url: "/paintings", method: "get", params: {q: query.q, authorId: query.authorId} }),
+        query: (query: TQuery) => ({
+          url: "/paintings",
+          method: "get",
+          params: { q: query.q, authorId: query.authorId },
+        }),
       }),
       getPage: build.query<TPicture[], TPageLimit>({
-        query: (query: TPageLimit) => ({ url: '/paintings', method: 'get', params: query})
-      })
+        query: (query: TPageLimit) => ({
+          url: "/paintings",
+          method: "get",
+          params: query,
+        }),
+      }),
+      getAuthors: build.query<TAuthors[], TQuery>({
+        query: (query) => ({ url: "/authors", method: "get", params: query }),
+      }),
+      getLocations: build.query<TLocations[], TQuery>({
+        query: (query) => ({ url: "/locations", method: "get", params: query }),
+      }),
     };
   },
 });
 
-export const { useGetDataTotalQuery, useGetPageQuery } = api;
+export const { useGetDataTotalQuery, useGetPageQuery, useGetAuthorsQuery, useGetLocationsQuery } = api;
