@@ -27,7 +27,3 @@ export type TLocations = {
   location: string;
 };
 
-export enum ElementStates {
-  Closed = "closed",
-  Open = "open",
-}

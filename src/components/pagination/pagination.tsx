@@ -1,5 +1,6 @@
-import { IconButton } from "../../ui/icon-button/icon-button";
 import styles from "./pagination.module.scss";
+import cn from "classnames";
+import { IconButton } from "../../ui/icon-button/icon-button";
 import { TPaginationProps } from "./pagination.types";
 
 export const Pagination = (props: TPaginationProps) => {
@@ -41,9 +42,12 @@ export const Pagination = (props: TPaginationProps) => {
             <button
               onClick={() => handleNumberPageClick(item)}
               key={index}
-              className={styles.navigation}
+              className={cn(
+                styles.navigation,
+                nav.current === index + 1 ? styles.choosen : styles.default
+              )}
             >
-              <span className={styles.number}>{item}</span>
+              <span className={cn(styles.number, nav.current === index + 1 && styles.choosen)}>{item}</span>
             </button>
           );
         })}

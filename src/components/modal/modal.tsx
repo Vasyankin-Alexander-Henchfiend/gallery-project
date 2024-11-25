@@ -1,14 +1,8 @@
-import React, { ReactNode, useEffect } from "react";
+import React, { useEffect } from "react";
 import styles from "./modal.module.scss";
 import { IconButton } from "../../ui/icon-button/icon-button";
-import { ElementStates } from "../types/types";
 import { ModalOverlay } from "./modal-overlay/modal-overlay";
-
-interface IModal {
-  children: ReactNode;
-  onClose: () => void;
-  state: ElementStates;
-}
+import { ElementStates, IModal } from "./modal.types";
 
 export const Modal: React.FC<IModal> = ({
   children,

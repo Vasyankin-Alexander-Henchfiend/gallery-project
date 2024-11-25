@@ -66,7 +66,7 @@ export const Main: React.FC = () => {
         onChange={onChange}
         filterIconClick={() => dispatch(openModal())}
       />
-      {/* Списко картин */}
+      {/* Спискок картин */}
       <ul className={styles.gallery}>
         {error ? (
           <>Oh no, there was an error</>

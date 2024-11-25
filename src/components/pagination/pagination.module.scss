@@ -5,29 +5,63 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
     .arrow {
         &-button {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            margin: 0 18px;
+
             &:hover {
                 background-color: index.$primary-black-hagh-opacity;
                 border-radius: 4px;
             }
         }
+
         &-icon {
             background-image: url(../app/assets/images/simple_arrow_icon.svg);
             width: 7.6px;
             height: 11.8px;
+
             &-left {
                 transform: rotate(180deg);
             }
         }
     }
+
     .navigation {
+        width: 24px;
+        height: 24px;
         cursor: pointer;
         border: none;
-        background: none;
+        margin: 0 2px;
+
+        &.choosen {
+            background-color: index.$primary-black-hagh-opacity;
+            border-radius: 4px;
+        }
+
+        &.default {
+            background: none;
+            border-radius: 0
+        }
+
+        &:hover {
+            border-radius: 0;
+            border-bottom: 1px index.$secondary-gray solid;
+
+        }
+
         .number {
-            @extend %paragraph-big-medium;
+            @extend %paragraph-big-light;
+
+            &:hover {
+                @extend %paragraph-big-medium;
+            }
+            &.choosen {
+                @extend %paragraph-big-medium;
+            }
         }
     }
 }
-

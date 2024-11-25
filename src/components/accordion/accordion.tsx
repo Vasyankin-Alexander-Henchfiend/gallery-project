@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import cn from 'classnames';
 import styles from "../accordion/accordion.module.scss";
 import { InputWithDataList } from "../../ui/datalist/datalist";
 
@@ -18,9 +19,7 @@ export const Accordion: React.FC<IAccordionProps> = ({ title, type, placeholder,
       <button className={styles.button} onClick={() => setOpen(!open)}>
         <h4 className={styles.title}>{title}</h4>
         <i
-          className={
-            !open ? styles.icon : `${styles.icon} ${styles[`icon-open`]}`
-          }
+          className={cn(styles.icon, open && styles.open)}
         />
       </button>
       {open && (
