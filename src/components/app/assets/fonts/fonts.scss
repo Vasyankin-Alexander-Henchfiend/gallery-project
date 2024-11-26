@@ -1,7 +1,34 @@
 @font-face {
 	font-family: 'Cormorant SC';
-	src: src('./CormorantSC-Book.woff2') format('woff2'), src('./CormorantSC-Book.woff') format('woff');
 	font-weight: 500;
 	font-style: normal;
+	src: url(./CormorantSC-Book.woff2) format('woff2'),
+		url(./CormorantSC-Book.woff) format('woff');
 }
 
+@font-face {
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 300;
+	font-display: swap;
+	src: url(./Inter-Light.woff2) format("woff2"),
+		url(./Inter-Light.woff) format("woff");
+}
+
+@font-face {
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+	src: url(./Inter-Medium.woff2) format("woff2"),
+		url(./Inter-Medium.woff) format("woff");
+}
+
+@font-face {
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src: url(./Inter-Bold.woff2) format("woff2"),
+		url(./Inter-Bold.woff) format("woff");
+}
