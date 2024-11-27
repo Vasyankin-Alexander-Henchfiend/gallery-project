@@ -2,10 +2,10 @@ import React, { ChangeEvent, useCallback, useEffect, useState } from "react";
 import styles from "./main.module.scss";
 import { Pagination } from "../pagination/pagination";
 import { Search } from "../search/search";
-import { useGetDataTotalQuery, useGetPageQuery } from "../../api/api";
+import { useGetAuthorsQuery, useGetDataTotalQuery, useGetPageQuery } from "../../api/api";
 import { TPageLimit, TPicture } from "../types/types";
 import { Picture } from "../picture/picture";
-import { getTotalPageCount, PICTURE_PER_PAGE } from "../../const/pictures";
+import { getData, getTotalPageCount, PICTURE_PER_PAGE } from "../../const/pictures";
 import { useAppDispatch } from "../../services/hooks/hooks";
 import { openModal } from "../../services/slices/modal";
 
@@ -23,6 +23,12 @@ export const Main: React.FC = () => {
 
   const { data: picturesSum } = useGetDataTotalQuery(query);
   const { data, error, isLoading } = useGetPageQuery(query);
+  // const { data: authors } = useGetAuthorsQuery("");
+  // // const { data: locations } = useGetLocationsQuery("");
+
+  // if(data && authors) {
+  //   getData(data, authors);
+  // }
 
   // Получаем общее количество картин, для отображения пагинации
   useEffect(() => {

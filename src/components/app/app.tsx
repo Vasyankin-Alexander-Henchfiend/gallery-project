@@ -1,12 +1,10 @@
 import { useGetAuthorsQuery, useGetLocationsQuery } from "../../api/api";
-import { getPureArray } from "../../const/pictures";
 import { useAppDispatch, useAppSelector } from "../../services/hooks/hooks";
 import { closeModal } from "../../services/slices/modal";
 import { Accordion } from "../accordion/accordion";
 import { Header } from "../header/header";
 import { Main } from "../main/main";
 import { ElementStates, Modal } from "../modal/modal";
-import { TAuthors, TLocations } from "../types/types";
 
 import styles from "./app.module.scss";
 
@@ -14,19 +12,15 @@ function App() {
   const modal = useAppSelector((store) => store.modal.open);
   const dispatch = useAppDispatch();
 
-  const authorQuery = {
-    q: "",
-  };
+  const { data: authors } = useGetAuthorsQuery('');
+  const { data: locations } = useGetLocationsQuery('');
 
-  const locationQuery = {
-    q: "",
-  };
+  const testArray = [
+    '1', '2'
+  ]
 
-  const { data: authors } = useGetAuthorsQuery(authorQuery);
-  const { data: locations } = useGetLocationsQuery(locationQuery);
-
-  const authorsArray = getPureArray<TAuthors>(authors, "name");
-  const locationsArray = getPureArray<TLocations>(locations, "location");
+  console.log(authors);
+  console.log(locations);
 
   return (
     <div className={styles.app}>
@@ -40,19 +34,19 @@ function App() {
           type="text"
           title={"Artist"}
           placeholder={"Select the artist"}
-          itemArray={authorsArray}
+          itemArray={testArray}
         />
         <Accordion
           type="text"
           title={"Location"}
           placeholder={"Select the location"}
-          itemArray={locationsArray}
+          itemArray={testArray}
         />
         <Accordion
           type="text"
           title={"Years"}
           placeholder={"Select the location"}
-          itemArray={locationsArray}
+          itemArray={testArray}
         />
       </Modal>
     </div>

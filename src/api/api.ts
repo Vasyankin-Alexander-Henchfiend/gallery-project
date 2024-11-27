@@ -2,8 +2,17 @@ import { createApi } from "@reduxjs/toolkit/query/react";
 import type { BaseQueryFn } from "@reduxjs/toolkit/query";
 import axios from "axios";
 import type { AxiosRequestConfig, AxiosError } from "axios";
-import { TAuthors, TLocations, TPageLimit, TPicture, TQuery } from "../components/types/types";
+import {
+  TAuthor,
+  TAuthorNormalize,
+  TLocation,
+  TLocationNormalize,
+  TPageLimit,
+  TPicture,
+  TQuery,
+} from "../components/types/types";
 import { BASE_URL } from "../const/pictures";
+import { createEntityAdapter } from "@reduxjs/toolkit";
 
 const axiosBaseQuery =
   (
@@ -40,6 +49,15 @@ const axiosBaseQuery =
     }
   };
 
+
+const authorAdapter = createEntityAdapter<TAuthor>({
+  sortComparer: (a, b) => a.name.localeCompare(b.name),
+});
+
+const locationAdapter = createEntityAdapter<TLocation>({
+  sortComparer: (a, b) => a.location.localeCompare(b.location),
+});
+
 export const api = createApi({
   baseQuery: axiosBaseQuery({
     baseUrl: BASE_URL,
@@ -60,11 +78,23 @@ export const api = createApi({
           params: query,
         }),
       }),
-      getAuthors: build.query<TAuthors[], TQuery>({
-        query: (query) => ({ url: "/authors", method: "get", params: query }),
+      getAuthors: build.query<TAuthorNormalize, "">({
+        query: () => ({ url: "/authors", method: "get" }),
+        transformResponse(response: TAuthor[]) {
+          return authorAdapter.addMany(
+            authorAdapter.getInitialState(),
+            response
+          );
+        },
       }),
-      getLocations: build.query<TLocations[], TQuery>({
-        query: (query) => ({ url: "/locations", method: "get", params: query }),
+      getLocations: build.query<TLocationNormalize, "">({
+        query: () => ({ url: "/locations", method: "get" }),
+        transformResponse(response: TLocation[]) {
+          return locationAdapter.addMany(
+            locationAdapter.getInitialState(),
+            response
+          );
+        },
       }),
     };
   },
