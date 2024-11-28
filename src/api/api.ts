@@ -4,15 +4,13 @@ import axios from "axios";
 import type { AxiosRequestConfig, AxiosError } from "axios";
 import {
   TAuthor,
-  TAuthorNormalize,
   TLocation,
-  TLocationNormalize,
   TPageLimit,
   TPicture,
   TQuery,
 } from "../components/types/types";
 import { BASE_URL } from "../const/pictures";
-import { createEntityAdapter } from "@reduxjs/toolkit";
+import { createEntityAdapter, EntityState } from "@reduxjs/toolkit";
 
 const axiosBaseQuery =
   (
@@ -49,7 +47,6 @@ const axiosBaseQuery =
     }
   };
 
-
 const authorAdapter = createEntityAdapter<TAuthor>({
   sortComparer: (a, b) => a.name.localeCompare(b.name),
 });
@@ -78,7 +75,7 @@ export const api = createApi({
           params: query,
         }),
       }),
-      getAuthors: build.query<TAuthorNormalize, "">({
+      getAuthors: build.query<EntityState<TAuthor, number>, void>({
         query: () => ({ url: "/authors", method: "get" }),
         transformResponse(response: TAuthor[]) {
           return authorAdapter.addMany(
@@ -87,7 +84,7 @@ export const api = createApi({
           );
         },
       }),
-      getLocations: build.query<TLocationNormalize, "">({
+      getLocations: build.query<EntityState<TLocation, number>, void>({
         query: () => ({ url: "/locations", method: "get" }),
         transformResponse(response: TLocation[]) {
           return locationAdapter.addMany(
@@ -100,4 +97,9 @@ export const api = createApi({
   },
 });
 
-export const { useGetDataTotalQuery, useGetPageQuery, useGetAuthorsQuery, useGetLocationsQuery } = api;
+export const {
+  useGetDataTotalQuery,
+  useGetPageQuery,
+  useGetAuthorsQuery,
+  useGetLocationsQuery,
+} = api;

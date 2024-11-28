@@ -22,23 +22,9 @@ export type TAuthor = {
   name: string;
 };
 
-export type TAuthorNormalize = {
-  entities: {
-    [key: number]: TAuthor;
-  };
-  ids: number[];
-};
-
 export type TLocation = {
   id: number;
   location: string;
-};
-
-export type TLocationNormalize = {
-  entities: {
-    [key: number]: TLocation;
-  };
-  ids: number[];
 };
 
 export type TData = {

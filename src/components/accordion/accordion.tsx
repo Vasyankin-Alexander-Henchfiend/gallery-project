@@ -1,16 +1,13 @@
-import React, { useState } from "react";
+import React, { ReactNode, useState } from "react";
 import cn from 'classnames';
 import styles from "../accordion/accordion.module.scss";
-import { InputWithDataList } from "../../ui/datalist/datalist";
 
 interface IAccordionProps {
   title: string;
-  type: string;
-  placeholder: string;
-  itemArray: (string | number)[] | undefined
+  children: ReactNode;
 }
 
-export const Accordion: React.FC<IAccordionProps> = ({ title, type, placeholder, itemArray }) => {
+export const Accordion: React.FC<IAccordionProps> = ({ title, children }) => {
 
   const [open, setOpen] = useState(false)
 
@@ -22,13 +19,7 @@ export const Accordion: React.FC<IAccordionProps> = ({ title, type, placeholder,
           className={cn(styles.icon, open && styles.open)}
         />
       </button>
-      {open && (
-        <InputWithDataList
-          placeholder={placeholder}
-          type={type}
-          data={itemArray}
-        />
-      )}
+      {open && <>{children}</>}
     </>
   );
 };
