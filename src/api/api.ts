@@ -47,13 +47,13 @@ const axiosBaseQuery =
     }
   };
 
-const authorAdapter = createEntityAdapter<TAuthor>({
-  sortComparer: (a, b) => a.name.localeCompare(b.name),
-});
+// const authorAdapter = createEntityAdapter<TAuthor>({
+//   sortComparer: (a, b) => a.name.localeCompare(b.name),
+// });
 
-const locationAdapter = createEntityAdapter<TLocation>({
-  sortComparer: (a, b) => a.location.localeCompare(b.location),
-});
+// const locationAdapter = createEntityAdapter<TLocation>({
+//   sortComparer: (a, b) => a.location.localeCompare(b.location),
+// });
 
 export const api = createApi({
   baseQuery: axiosBaseQuery({
@@ -75,23 +75,11 @@ export const api = createApi({
           params: query,
         }),
       }),
-      getAuthors: build.query<EntityState<TAuthor, number>, void>({
+      getAuthors: build.query<TAuthor[], void>({
         query: () => ({ url: "/authors", method: "get" }),
-        transformResponse(response: TAuthor[]) {
-          return authorAdapter.addMany(
-            authorAdapter.getInitialState(),
-            response
-          );
-        },
       }),
-      getLocations: build.query<EntityState<TLocation, number>, void>({
+      getLocations: build.query<TLocation[], void>({
         query: () => ({ url: "/locations", method: "get" }),
-        transformResponse(response: TLocation[]) {
-          return locationAdapter.addMany(
-            locationAdapter.getInitialState(),
-            response
-          );
-        },
       }),
     };
   },

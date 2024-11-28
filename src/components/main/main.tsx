@@ -29,12 +29,6 @@ export const Main: React.FC = () => {
 
   const { data: picturesSum } = useGetDataTotalQuery(query);
   const { data, error, isLoading } = useGetPageQuery(query);
-  // const { data: authors } = useGetAuthorsQuery("");
-  // // const { data: locations } = useGetLocationsQuery("");
-
-  // if(data && authors) {
-  //   getData(data, authors);
-  // }
 
   // Получаем общее количество картин, для отображения пагинации
   useEffect(() => {

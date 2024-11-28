@@ -2,18 +2,24 @@ import { useState } from "react";
 import styles from "./datalist.module.scss";
 import { ModalOverlay } from "../../components/modal/modal-overlay/modal-overlay";
 
-interface IInputWithDataList {
+type TInputWithDataList = {
   placeholder: string;
   type: string;
-  data: (string | number)[] | undefined;
-}
+  data: {
+    id: string | number;
+    label: string | number;
+  }[] | undefined;
+};
 
-export const InputWithDataList: React.FC<IInputWithDataList> = ({
+export const InputWithDataList = (props: TInputWithDataList) => {
+
+const {
   placeholder,
   type,
-  data,
+  data = null,
   ...rest
-}) => {
+} = props;
+
   enum ListState {
     Hidden = "hidden",
     Visible = "visible",
@@ -41,9 +47,9 @@ export const InputWithDataList: React.FC<IInputWithDataList> = ({
       />
       <i className={styles.icon} onClick={() => listSeter()} />
       <ul className={styles.list}>
-        {data?.map((item, index) => (
-          <li key={index} onClick={() => setInputValue(item.toString())}>
-            {item}
+        {data?.map((item) => (
+          <li key={item.id} onClick={() => setInputValue(item.label.toString())}>
+            {item.label}
           </li>
         ))}
       </ul>
