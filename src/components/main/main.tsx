@@ -2,12 +2,18 @@ import React, { ChangeEvent, useCallback, useEffect, useState } from "react";
 import styles from "./main.module.scss";
 import { Pagination } from "../pagination/pagination";
 import { Search } from "../search/search";
-import { useGetAuthorsQuery, useGetDataTotalQuery, useGetPageQuery } from "../../api/api";
+import {
+  useGetDataTotalQuery,
+  useGetPageQuery,
+} from "../../api/api";
 import { TPageLimit, TPicture } from "../types/types";
 import { Picture } from "../picture/picture";
-import { getData, getTotalPageCount, PICTURE_PER_PAGE } from "../../const/pictures";
+import {
+  PICTURE_PER_PAGE,
+} from "../../const/consts";
 import { useAppDispatch } from "../../services/hooks/hooks";
 import { openModal } from "../../services/slices/modal";
+import { getTotalPageCount } from "../../const/utils";
 
 export const Main: React.FC = () => {
   const [page, setPage] = useState<number>(1);

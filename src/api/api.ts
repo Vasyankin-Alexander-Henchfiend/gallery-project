@@ -9,7 +9,7 @@ import {
   TPicture,
   TQuery,
 } from "../components/types/types";
-import { BASE_URL } from "../const/pictures";
+import { BASE_URL } from "../const/consts";
 import { createEntityAdapter, EntityState } from "@reduxjs/toolkit";
 
 const axiosBaseQuery =
