@@ -3,6 +3,7 @@ import { getPureArray } from "../../const/utils";
 import { useAppDispatch, useAppSelector } from "../../services/hooks/hooks";
 import { closeModal } from "../../services/slices/modal";
 import { InputWithDataList } from "../../ui/datalist/datalist";
+import { YearsForm } from "../../ui/years-form/years-form";
 import { Accordion } from "../accordion/accordion";
 import { Header } from "../header/header";
 import { Main } from "../main/main";
@@ -21,8 +22,6 @@ function App() {
 
   const authorsList = getPureArray<TAuthor>(authors, "name", "id");
   const locationsList = getPureArray<TLocation>(locations, "location", "id");
-  console.log(authorsList)
-  console.log(locationsList)
 
   return (
     <div className={styles.app}>
@@ -53,7 +52,7 @@ function App() {
         </Accordion>
 
         <Accordion title={"Years"}>
-          <input />
+          <YearsForm  />
         </Accordion>
       </Modal>
     </div>
