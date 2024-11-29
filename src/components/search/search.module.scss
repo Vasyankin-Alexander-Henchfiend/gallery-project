@@ -21,16 +21,16 @@
             box-sizing: border-box;
             color: index.$primary-dark-gray;
             caret-color: index.$primary-dark-gray;
-    
+
             &::placeholder {
                 color: index.$secondary-gray;
             }
-    
+
             &:focus {
                 outline: none !important;
                 border-color: index.$primary-dark-gray;
             }
-    
+
             &::-webkit-search-cancel-button {
                 -webkit-appearance: none;
             }
@@ -45,6 +45,7 @@
                 right: 16px;
                 padding: 2px;
             }
+
             &-icon {
                 background-image: url(../app/assets/images/close-icon-size=small.svg);
                 width: 8px;

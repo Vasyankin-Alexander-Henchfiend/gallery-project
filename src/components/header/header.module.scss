@@ -6,25 +6,27 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
     margin: 28px 0;
+    
     .logo {
         width: 91px;
         height: 20px;
+        cursor: pointer;
     }
-    .theme-icon-wrapper {
+
+    .theme-button {
         width: 40px;
         height: 40px;
+        padding: 8px;
         background-color: index.$secondary-white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
         border-radius: 50%;
+
         .theme-icon {
+            background-image: url(../app/assets/images/dark_icon.svg);
             width: 24px;
             height: 24px;
         }
     }
+
 }
-
-

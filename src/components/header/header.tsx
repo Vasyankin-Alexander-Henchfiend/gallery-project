@@ -1,15 +1,19 @@
-import styles from './header.module.scss';
+import styles from "./header.module.scss";
 import logo from "../app/assets/images/logo.svg";
-import themeIcon from '../app/assets/images/dark_icon.svg';
-import React from 'react';
+import React from "react";
+import { IconButton } from "../../ui/icon-button/icon-button";
 
 export const Header: React.FC = () => {
-    return (
-      <header className={styles.header}>
+  return (
+    <header className={styles.header}>
+      <a href="https://framework.team/">
         <img src={logo} className={styles.logo}></img>
-        <div className={styles[`theme-icon-wrapper`]}>
-          <img src={themeIcon} className={styles[`theme-icon`]}></img>
-        </div>
-      </header>
-    );
-}
+      </a>
+      <IconButton
+        extraClassButton={styles[`theme-button`]}
+        extraClassIcon={styles[`theme-icon`]}
+        onClick={() => null}
+      />
+    </header>
+  );
+};
