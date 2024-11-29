@@ -1,9 +1,5 @@
 import styles from "./years-form.module.scss";
 
-type TYearsForm = {
-    value: string;
-}
-
 export const YearsForm = () => {
   return (
     <form className={styles.form}>

@@ -70,8 +70,9 @@ export const Main: React.FC = () => {
         placeholder="Painting title"
         value={searchQuery}
         onChange={onChange}
-        filterIconClick={() => dispatch(openModal())}
-      />
+        filterIconClick={() => dispatch(openModal())} 
+        closedIconClick={() => setSearchQuery('')}
+        />
       {/* Спискок картин */}
       <ul className={styles.gallery}>
         {error ? (
