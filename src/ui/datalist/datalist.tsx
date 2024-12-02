@@ -11,7 +11,7 @@ type TInputWithDataList = {
   }[] | undefined;
 };
 
-export const InputWithDataList = (props: TInputWithDataList) => {
+export const InputWithDatalist = (props: TInputWithDataList) => {
 
 const {
   placeholder,
@@ -35,7 +35,7 @@ const {
   };
 
   return (
-    <div id="datalist" className={`${styles.datalist} ${styles[listState]}`}>
+    <form id="datalist" className={`${styles.datalist} ${styles[listState]}`}>
       <input
         onClick={() => setListState(ListState.Visible)}
         className={styles[`datalist-input`]}
@@ -48,7 +48,7 @@ const {
       <i className={styles.icon} onClick={() => listSeter()} />
       <ul className={styles.list}>
         {data?.map((item) => (
-          <li key={item.id} onClick={() => setInputValue(item.label.toString())}>
+          <li className={styles[`list-item`]} key={item.id} onClick={() => setInputValue(item.label.toString())}>
             {item.label}
           </li>
         ))}
@@ -59,6 +59,6 @@ const {
           onClose={() => setListState(ListState.Hidden)}
         />
       )}
-    </div>
+    </form>
   );
 };

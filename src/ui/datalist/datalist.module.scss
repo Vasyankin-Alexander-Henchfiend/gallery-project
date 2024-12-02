@@ -1,25 +1,52 @@
+@use '../../components/app/styles/index';
+
 .datalist {
-  margin: auto;
   position: relative;
-  width: 400px;
-  color: #000;
+  width: 320px;
 
   &-input {
-    padding-left: 1em;
     width: 100%;
-    height: 54px;
-    border-radius: 5px;
+    height: 36px;
+    border-radius: 4px;
+    border: 1px solid index.$primary-light-gray;
+    padding: 8px 36px 8px 16px;
+    text-overflow: ellipsis;
     box-sizing: border-box;
+    color: index.$primary-dark-gray;
     box-shadow: none;
-    border: 1px solid #ccc;
     outline: 0;
     z-index: 99;
 
     &:focus {
-      border: 1px solid #aa0000;
+      border: 1px solid index.$primary-dark-gray;
       outline: 0;
     }
+
+    &::placeholder {
+      color: index.$secondary-gray;
+    }
   }
+
+  &.hidden {
+    .list {
+      visibility: hidden;
+    }
+
+    .icon {
+      transform: rotate(0deg);
+    }
+  }
+
+  &.visible {
+    .list {
+      visibility: visible;
+    }
+
+    .icon {
+      transform: rotate(180deg);
+    }
+  }
+
   .icon {
     background-image: url(../../components/app/assets/images/expand_icon.svg);
     background-position: center;
@@ -27,31 +54,17 @@
     width: 12px;
     height: 7px;
     position: absolute;
+    top: 15px;
     right: 20px;
-    top: 20px;
     transition: transform 0.2s ease;
     cursor: pointer;
   }
-  &.hidden {
-    .list {
-      visibility: hidden;
-    }
-    .icon {
-      transform: rotate(0deg);
-    }
-  }
-  &.visible {
-    .list {
-      visibility: visible;
-    }
-    .icon {
-      transform: rotate(180deg);
-    }
-  }
+
   .overlay {
     z-index: 10;
   }
 }
+
 
 .list {
   position: absolute;
@@ -63,22 +76,42 @@
   left: 0;
   list-style: none;
   border-radius: 2px;
-  background: #fff;
+  background: index.$primary-white;
   overflow: hidden;
-  overflow-y: auto;
+  overflow-y: scroll;
   z-index: 100;
-  
-  li {
+  // scrollbar-width: thin;
+  // scrollbar-color: index.$secondary-gray index.$primary-white;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 4px;
+    box-shadow: inset 0 0 10px index.$primary-white;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    box-shadow: inset 0 0 10px index.$secondary-gray;
+  }
+
+  &-item {
     display: block;
     text-align: left;
-    padding: 0.8em 1em 0.8em 1em;
-    color: #999;
+    height: 36px;
+    padding: 8px 16px;
+    box-sizing: border-box;
+    color: index.$primary-dark-gray;
     cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
     z-index: 100;
-    
+
     &:hover {
-      background: #4e00f0;
-      color: #f00;
+      background: index.$primary-black-hagh-opacity;
     }
   }
 }
