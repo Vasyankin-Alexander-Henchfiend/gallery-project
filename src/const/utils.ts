@@ -6,3 +6,8 @@ export const getTotalPageCount = (rowCount: number, limit: number): number =>
 export function getPureArray<T>(array: T[] | undefined, value: keyof T, id: keyof T) {
   return array?.map((item) => {return { id: item[id], label: item[value]}});
 }
+
+//Функция фильтрации вариантов в окне подсказок
+export function dataListFilter<T>(value: string, data: T[], label: keyof T) {
+  return data.filter((item) => item[label] === value) 
+}

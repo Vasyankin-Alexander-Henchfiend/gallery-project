@@ -54,7 +54,7 @@ export const api = createApi({
     return {
       //Получаем данные, не постранично, для динамической отрисовки пагинатора
       getDataTotal: build.query<TPicture[], TPageLimit>({
-        query: (query: TQuery) => ({
+        query: (query: TPageLimit) => ({
           url: "/paintings",
           method: "get",
           params: { q: query.q, authorId: query.authorId },
@@ -63,7 +63,7 @@ export const api = createApi({
 
       //Получаем данные постранично для отрисовки карточек
       getPage: build.query<TPicture[], TQuery>({
-        query: (query: TPageLimit) => ({
+        query: (query: TQuery) => ({
           url: "/paintings",
           method: "get",
           params: query,
