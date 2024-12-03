@@ -6,7 +6,7 @@ import {
   useGetDataTotalQuery,
   useGetPageQuery,
 } from "../../api/api";
-import { TPageLimit, TPicture } from "../types/types";
+import { TPicture, TQuery } from "../types/types";
 import { Picture } from "../picture/picture";
 import {
   PICTURE_PER_PAGE,
@@ -21,7 +21,7 @@ export const Main: React.FC = () => {
   const [picturesTotal, setPicturesTotal] = useState<number>(0);
   const dispatch = useAppDispatch();
 
-  const query: TPageLimit = {
+  const query: TQuery = {
     _page: page,
     _limit: PICTURE_PER_PAGE,
     q: searchQuery,

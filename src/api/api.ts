@@ -10,7 +10,6 @@ import {
   TQuery,
 } from "../components/types/types";
 import { BASE_URL } from "../const/consts";
-import { createEntityAdapter, EntityState } from "@reduxjs/toolkit";
 
 const axiosBaseQuery =
   (
@@ -47,37 +46,36 @@ const axiosBaseQuery =
     }
   };
 
-// const authorAdapter = createEntityAdapter<TAuthor>({
-//   sortComparer: (a, b) => a.name.localeCompare(b.name),
-// });
-
-// const locationAdapter = createEntityAdapter<TLocation>({
-//   sortComparer: (a, b) => a.location.localeCompare(b.location),
-// });
-
 export const api = createApi({
   baseQuery: axiosBaseQuery({
     baseUrl: BASE_URL,
   }),
   endpoints(build) {
     return {
-      getDataTotal: build.query<TPicture[], TQuery>({
+      //Получаем данные, не постранично, для динамической отрисовки пагинатора
+      getDataTotal: build.query<TPicture[], TPageLimit>({
         query: (query: TQuery) => ({
           url: "/paintings",
           method: "get",
           params: { q: query.q, authorId: query.authorId },
         }),
       }),
-      getPage: build.query<TPicture[], TPageLimit>({
+
+      //Получаем данные постранично для отрисовки карточек
+      getPage: build.query<TPicture[], TQuery>({
         query: (query: TPageLimit) => ({
           url: "/paintings",
           method: "get",
           params: query,
         }),
       }),
+
+      //Получаем массив всех авторов
       getAuthors: build.query<TAuthor[], void>({
         query: () => ({ url: "/authors", method: "get" }),
       }),
+
+      //Получаем массив всех музеев
       getLocations: build.query<TLocation[], void>({
         query: () => ({ url: "/locations", method: "get" }),
       }),
