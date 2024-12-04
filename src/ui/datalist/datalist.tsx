@@ -5,13 +5,13 @@ import { TDataForDatalist } from "../../components/types/types";
 
 interface InputWithDataList extends React.HTMLProps<HTMLInputElement> {
   placeholder: string;
-  getItem: (arg: string) => void;
+  onGetItem: (arg: string) => void;
   type: string;
-  data: TDataForDatalist[] | undefined;
+  dataArray: TDataForDatalist[] | undefined;
 };
 
 export const InputWithDatalist: React.FC<InputWithDataList> = (props) => {
-  const { placeholder, type, data = null, getItem, ...rest } = props;
+  const { placeholder, type, dataArray = null, onGetItem, ...rest } = props;
 
   enum ListState {
     Hidden = "hidden",
@@ -19,8 +19,6 @@ export const InputWithDatalist: React.FC<InputWithDataList> = (props) => {
   }
 
   const [listState, setListState] = useState(ListState.Hidden);
-  // const [inputValue, setInputValue] = useState<string>("");
-
 
   const listSeter = () => {
     if (listState === ListState.Hidden) {
@@ -39,11 +37,11 @@ export const InputWithDatalist: React.FC<InputWithDataList> = (props) => {
       />
       <i className={styles.icon} onClick={() => listSeter()} />
       <ul className={styles.list}>
-        {data?.map((item) => (
+        {dataArray?.map((item) => (
           <li
             className={styles[`list-item`]}
             key={item.id}
-            onClick={() => getItem(item.label.toString())}
+            onClick={() => onGetItem(item.label.toString())}
           >
             {item.label}
           </li>

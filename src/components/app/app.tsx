@@ -1,4 +1,4 @@
-import { ChangeEvent, useCallback, useEffect, useState } from "react";
+import { ChangeEvent, useCallback, useEffect, useRef, useState } from "react";
 import { useGetAuthorsQuery, useGetLocationsQuery } from "../../api/api";
 import { getPureArray } from "../../const/utils";
 import { useAppDispatch, useAppSelector } from "../../services/hooks/hooks";
@@ -20,8 +20,11 @@ function App() {
   const { data: authors, isSuccess: authorsIsSuccess } = useGetAuthorsQuery();
   const { data: locations, isSuccess: locationssIsSuccess } =
     useGetLocationsQuery();
+
   const [authorInputValue, setAuthorInputValue] = useState<string>("");
   const [locationInputValue, setLocationInputValue] = useState<string>("");
+
+  //Массивы для парсинга в компоненте
   const [authorsList, setAuthorsList] = useState<
     TDataForDatalist[] | undefined
   >([]);
@@ -29,17 +32,21 @@ function App() {
     TDataForDatalist[] | undefined
   >([]);
 
-  const originalAuthorsList = getPureArray<TAuthor>(authors, "name", "id");
-  const originalLocationsList = getPureArray<TLocation>(
-    locations,
-    "location",
-    "id"
-  );
+  //Массивы для сравнения при запoлнении инпута
+  const originalAuthorsList = useRef<TDataForDatalist[]>([]);
+  const originalLocationsList = useRef<TDataForDatalist[]>([]);
 
   useEffect(() => {
-    setAuthorsList(originalAuthorsList);
-    setLocationsList(originalLocationsList);
-  }, [authors, locations]);
+    originalAuthorsList.current =
+      getPureArray<TAuthor>(authors, "name", "id") ?? [];
+    setAuthorsList(originalAuthorsList.current);
+  }, [authors]);
+
+  useEffect(() => {
+    originalLocationsList.current =
+      getPureArray<TLocation>(locations, "location", "id") ?? [];
+    setLocationsList(originalLocationsList.current);
+  }, [locations]);
 
   const onAuthorsListItemClick = useCallback((authorInputValue: string) => {
     setAuthorInputValue(authorInputValue);
@@ -49,33 +56,36 @@ function App() {
     setLocationInputValue(locationInputValue);
   }, []);
 
-  const authorsFilter = useCallback(
-    (event: ChangeEvent<HTMLInputElement>) => {
-      setAuthorInputValue(event.target.value);
-      const math = originalAuthorsList?.filter((item) =>
-        item.label
-          .toString()
-          .toLowerCase()
-          .includes(event.target.value.toLowerCase())
-      );
-      setAuthorsList(math);
-    },
-    [originalAuthorsList]
-  );
+  const authorsFilter = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+    setAuthorInputValue(event.target.value);
+  }, []);
+
+  useEffect(() => {
+    const math = originalAuthorsList.current.filter((item) =>
+      item.label
+        .toString()
+        .toLowerCase()
+        .includes(authorInputValue.toLowerCase())
+    );
+    setAuthorsList(math);
+  }, [authorInputValue]);
 
   const locationsFilter = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
       setLocationInputValue(event.target.value);
-      const math = originalLocationsList?.filter((item) =>
-        item.label
-          .toString()
-          .toLowerCase()
-          .includes(event.target.value.toLowerCase())
-      );
-      setLocationsList(math);
     },
-    [originalLocationsList]
+    []
   );
+
+  useEffect(() => {
+    const math = originalLocationsList.current.filter((item) =>
+      item.label
+        .toString()
+        .toLowerCase()
+        .includes(locationInputValue.toLowerCase())
+    );
+    setLocationsList(math);
+  }, [locationInputValue]);
 
   return (
     <div className={styles.app}>
@@ -93,7 +103,7 @@ function App() {
               data={authorsList}
               value={authorInputValue}
               onChange={authorsFilter}
-              getItem={onAuthorsListItemClick}
+              onGetItem={onAuthorsListItemClick}
             />
           ) : null}
         </Accordion>
@@ -106,7 +116,7 @@ function App() {
               data={locationsList}
               value={locationInputValue}
               onChange={locationsFilter}
-              getItem={onLocationListItemClick}
+              onGetItem={onLocationListItemClick}
             />
           ) : null}
         </Accordion>
