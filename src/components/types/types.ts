@@ -27,12 +27,7 @@ export type TLocation = {
   location: string;
 };
 
-export type TData = {
-  authorId: number;
-  authorName: string;
-  created: string;
-  id: number;
-  imageUrl: string;
-  locationId: number;
-  name: string;
-};
+export type TDataForDatalist = {
+  id: string | number;
+  label: string | number;
+}

@@ -1,3 +1,4 @@
+import { ChangeEvent, useCallback, useEffect, useState } from "react";
 import { useGetAuthorsQuery, useGetLocationsQuery } from "../../api/api";
 import { getPureArray } from "../../const/utils";
 import { useAppDispatch, useAppSelector } from "../../services/hooks/hooks";
@@ -8,7 +9,7 @@ import { Accordion } from "../accordion/accordion";
 import { Header } from "../header/header";
 import { Main } from "../main/main";
 import { ElementStates, Modal } from "../modal/modal";
-import { TAuthor, TLocation } from "../types/types";
+import { TAuthor, TDataForDatalist, TLocation } from "../types/types";
 
 import styles from "./app.module.scss";
 
@@ -19,9 +20,62 @@ function App() {
   const { data: authors, isSuccess: authorsIsSuccess } = useGetAuthorsQuery();
   const { data: locations, isSuccess: locationssIsSuccess } =
     useGetLocationsQuery();
+  const [authorInputValue, setAuthorInputValue] = useState<string>("");
+  const [locationInputValue, setLocationInputValue] = useState<string>("");
+  const [authorsList, setAuthorsList] = useState<
+    TDataForDatalist[] | undefined
+  >([]);
+  const [locationsList, setLocationsList] = useState<
+    TDataForDatalist[] | undefined
+  >([]);
 
-  const authorsList = getPureArray<TAuthor>(authors, "name", "id");
-  const locationsList = getPureArray<TLocation>(locations, "location", "id");
+  const originalAuthorsList = getPureArray<TAuthor>(authors, "name", "id");
+  const originalLocationsList = getPureArray<TLocation>(
+    locations,
+    "location",
+    "id"
+  );
+
+  useEffect(() => {
+    setAuthorsList(originalAuthorsList);
+    setLocationsList(originalLocationsList);
+  }, [authors, locations]);
+
+  const onAuthorsListItemClick = useCallback((authorInputValue: string) => {
+    setAuthorInputValue(authorInputValue);
+  }, []);
+
+  const onLocationListItemClick = useCallback((locationInputValue: string) => {
+    setLocationInputValue(locationInputValue);
+  }, []);
+
+  const authorsFilter = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      setAuthorInputValue(event.target.value);
+      const math = originalAuthorsList?.filter((item) =>
+        item.label
+          .toString()
+          .toLowerCase()
+          .includes(event.target.value.toLowerCase())
+      );
+      setAuthorsList(math);
+    },
+    [originalAuthorsList]
+  );
+
+  const locationsFilter = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      setLocationInputValue(event.target.value);
+      const math = originalLocationsList?.filter((item) =>
+        item.label
+          .toString()
+          .toLowerCase()
+          .includes(event.target.value.toLowerCase())
+      );
+      setLocationsList(math);
+    },
+    [originalLocationsList]
+  );
 
   return (
     <div className={styles.app}>
@@ -37,6 +91,9 @@ function App() {
               placeholder={"Select the artist"}
               type={"text"}
               data={authorsList}
+              value={authorInputValue}
+              onChange={authorsFilter}
+              getItem={onAuthorsListItemClick}
             />
           ) : null}
         </Accordion>
@@ -47,12 +104,15 @@ function App() {
               placeholder={"Select the location"}
               type={"text"}
               data={locationsList}
+              value={locationInputValue}
+              onChange={locationsFilter}
+              getItem={onLocationListItemClick}
             />
           ) : null}
         </Accordion>
 
         <Accordion title={"Years"}>
-          <YearsForm  />
+          <YearsForm />
         </Accordion>
       </Modal>
     </div>

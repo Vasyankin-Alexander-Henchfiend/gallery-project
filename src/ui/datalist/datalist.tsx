@@ -1,24 +1,17 @@
 import { useState } from "react";
 import styles from "./datalist.module.scss";
 import { ModalOverlay } from "../../components/modal/modal-overlay/modal-overlay";
+import { TDataForDatalist } from "../../components/types/types";
 
-type TInputWithDataList = {
+interface InputWithDataList extends React.HTMLProps<HTMLInputElement> {
   placeholder: string;
+  getItem: (arg: string) => void;
   type: string;
-  data: {
-    id: string | number;
-    label: string | number;
-  }[] | undefined;
+  data: TDataForDatalist[] | undefined;
 };
 
-export const InputWithDatalist = (props: TInputWithDataList) => {
-
-const {
-  placeholder,
-  type,
-  data = null,
-  ...rest
-} = props;
+export const InputWithDatalist: React.FC<InputWithDataList> = (props) => {
+  const { placeholder, type, data = null, getItem, ...rest } = props;
 
   enum ListState {
     Hidden = "hidden",
@@ -26,7 +19,8 @@ const {
   }
 
   const [listState, setListState] = useState(ListState.Hidden);
-  const [inputValue, setInputValue] = useState<string>("");
+  // const [inputValue, setInputValue] = useState<string>("");
+
 
   const listSeter = () => {
     if (listState === ListState.Hidden) {
@@ -41,14 +35,16 @@ const {
         className={styles[`datalist-input`]}
         type={type}
         placeholder={placeholder}
-        value={inputValue}
-        onChange={(event) => setInputValue(event.target.value)}
         {...rest}
       />
       <i className={styles.icon} onClick={() => listSeter()} />
       <ul className={styles.list}>
         {data?.map((item) => (
-          <li className={styles[`list-item`]} key={item.id} onClick={() => setInputValue(item.label.toString())}>
+          <li
+            className={styles[`list-item`]}
+            key={item.id}
+            onClick={() => getItem(item.label.toString())}
+          >
             {item.label}
           </li>
         ))}
