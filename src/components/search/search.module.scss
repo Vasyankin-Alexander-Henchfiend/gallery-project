@@ -21,12 +21,18 @@
             box-sizing: border-box;
             color: index.$primary-dark-gray;
             caret-color: index.$primary-dark-gray;
+            @extend %paragraph-big-light;
 
             &::placeholder {
+                @extend %paragraph-base-light;
                 color: index.$secondary-gray;
             }
 
             &:focus {
+                &::placeholder {
+                    visibility: hidden;
+                }
+
                 outline: none !important;
                 border-color: index.$primary-dark-gray;
             }
@@ -62,12 +68,20 @@
             border-radius: 4px;
             background: index.$secondary-white;
             padding: 6px;
+
+            &:hover {
+                background: index.$primary-black-hagh-opacity;
+            }
         }
 
         &-icon {
             background-image: url(/src/components/app/assets/images/filter_icon.svg);
             width: 24px;
             height: 24px;
+
+            &:hover {
+                filter: brightness(0) saturate(100%) invert(0%) sepia(67%) saturate(602%) hue-rotate(324deg) brightness(87%) contrast(86%);
+            }
         }
     }
 }

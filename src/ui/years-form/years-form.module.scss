@@ -21,15 +21,22 @@
         box-sizing: border-box;
         border-radius: 4px;
         border: 1px index.$primary-light-gray solid;
+        @extend %paragraph-base-light;
 
         &::placeholder {
+            @extend %paragraph-base-light;
             color: index.$secondary-gray;
         }
 
         &:focus {
+            &::placeholder {
+                visibility: hidden;
+            }
             outline: none !important;
             border-color: index.$primary-dark-gray;
         }
+
+
 
     }
 }

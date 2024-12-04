@@ -8,7 +8,7 @@ interface InputWithDataList extends React.HTMLProps<HTMLInputElement> {
   onGetItem: (arg: string) => void;
   type: string;
   dataArray: TDataForDatalist[] | undefined;
-};
+}
 
 export const InputWithDatalist: React.FC<InputWithDataList> = (props) => {
   const { placeholder, type, dataArray = null, onGetItem, ...rest } = props;
@@ -37,15 +37,21 @@ export const InputWithDatalist: React.FC<InputWithDataList> = (props) => {
       />
       <i className={styles.icon} onClick={() => listSeter()} />
       <ul className={styles.list}>
-        {dataArray?.map((item) => (
-          <li
-            className={styles[`list-item`]}
-            key={item.id}
-            onClick={() => onGetItem(item.label.toString())}
-          >
-            {item.label}
-          </li>
-        ))}
+        {dataArray != undefined && dataArray?.length > 0 ? (
+          dataArray?.map((item) => (
+            <li
+              className={styles[`list-item`]}
+              key={item.id}
+              onClick={() => onGetItem(item.label.toString())}
+            >
+              {item.label}
+            </li>
+          ))
+        ) : (
+          <div className={styles[`no-math`]}>
+            There are no matching results for your query.
+          </div>
+        )}
       </ul>
       {listState === ListState.Visible && (
         <ModalOverlay

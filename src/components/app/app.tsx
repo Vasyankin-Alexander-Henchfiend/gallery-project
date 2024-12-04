@@ -87,12 +87,18 @@ function App() {
     setLocationsList(math);
   }, [locationInputValue]);
 
+  //Очищаем инпут когда закрывает модальное окно
+  useEffect(() => {
+    setAuthorInputValue('')
+    setLocationInputValue('')
+  }, [modal])
+
   return (
     <div className={styles.app}>
       <Header />
       <Main />
       <Modal
-        onClose={() => dispatch(closeModal())}
+        onClose={() =>  dispatch(closeModal())}
         state={modal ? ElementStates.Open : ElementStates.Closed}
       >
         <Accordion title={"Artists"}>
@@ -100,7 +106,7 @@ function App() {
             <InputWithDatalist
               placeholder={"Select the artist"}
               type={"text"}
-              data={authorsList}
+              dataArray={authorsList}
               value={authorInputValue}
               onChange={authorsFilter}
               onGetItem={onAuthorsListItemClick}
@@ -113,7 +119,7 @@ function App() {
             <InputWithDatalist
               placeholder={"Select the location"}
               type={"text"}
-              data={locationsList}
+              dataArray={locationsList}
               value={locationInputValue}
               onChange={locationsFilter}
               onGetItem={onLocationListItemClick}
