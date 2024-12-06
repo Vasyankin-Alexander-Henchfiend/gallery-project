@@ -5,7 +5,7 @@ import { TDataForDatalist } from "../../components/types/types";
 
 interface InputWithDataList extends React.HTMLProps<HTMLInputElement> {
   placeholder: string;
-  onGetItem: (arg: string) => void;
+  onGetItem: (arg: string, arg1: number) => void;
   type: string;
   dataArray: TDataForDatalist[] | undefined;
 }
@@ -42,7 +42,7 @@ export const InputWithDatalist: React.FC<InputWithDataList> = (props) => {
             <li
               className={styles[`list-item`]}
               key={item.id}
-              onClick={() => onGetItem(item.label.toString())}
+              onClick={() => onGetItem(item.label.toString(), item.id)}
             >
               {item.label}
             </li>

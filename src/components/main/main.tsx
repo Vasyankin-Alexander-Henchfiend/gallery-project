@@ -2,29 +2,35 @@ import React, { ChangeEvent, useCallback, useEffect, useState } from "react";
 import styles from "./main.module.scss";
 import { Pagination } from "../pagination/pagination";
 import { Search } from "../search/search";
-import {
-  useGetDataTotalQuery,
-  useGetPageQuery,
-} from "../../api/api";
-import { TPicture, TQuery } from "../types/types";
+import { useGetDataTotalQuery, useGetPageQuery } from "../../api/api";
+import { TPageLimit, TPicture } from "../types/types";
 import { Picture } from "../picture/picture";
-import {
-  PICTURE_PER_PAGE,
-} from "../../const/consts";
-import { useAppDispatch } from "../../services/hooks/hooks";
+import { PICTURE_PER_PAGE } from "../../const/consts";
+import { useAppDispatch, useAppSelector } from "../../services/hooks/hooks";
 import { openModal } from "../../services/slices/modal";
 import { getTotalPageCount } from "../../const/utils";
+import { getQuery } from "../../services/slices/query";
 
 export const Main: React.FC = () => {
   const [page, setPage] = useState<number>(1);
-  const [searchQuery, setSearchQuery] = useState<string>("");
+  const {
+    query: searchQuery,
+    authorId,
+    locationId,
+    yearFrom,
+    yearTo,
+  } = useAppSelector((store) => store.query);
   const [picturesTotal, setPicturesTotal] = useState<number>(0);
   const dispatch = useAppDispatch();
 
-  const query: TQuery = {
+  const query: TPageLimit = {
     _page: page,
     _limit: PICTURE_PER_PAGE,
+    created_gte: yearFrom,
+    created_lte: yearTo,
     q: searchQuery,
+    authorId: authorId,
+    locationId: locationId,
   };
 
   const { data: picturesSum } = useGetDataTotalQuery(query);
@@ -39,7 +45,7 @@ export const Main: React.FC = () => {
 
   // Получаем значение поля поиска по названию картины
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(event.target.value);
+    dispatch(getQuery(event.target.value));
   };
 
   const handleNextPageClick = useCallback(() => {
@@ -70,9 +76,9 @@ export const Main: React.FC = () => {
         placeholder="Painting title"
         value={searchQuery}
         onChange={onChange}
-        filterIconClick={() => dispatch(openModal())} 
-        closedIconClick={() => setSearchQuery('')}
-        />
+        filterIconClick={() => dispatch(openModal())}
+        closedIconClick={() => dispatch(getQuery(""))}
+      />
       {/* Спискок картин */}
       <ul className={styles.gallery}>
         {error ? (

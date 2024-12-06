@@ -10,8 +10,12 @@ import { Header } from "../header/header";
 import { Main } from "../main/main";
 import { ElementStates, Modal } from "../modal/modal";
 import { TAuthor, TDataForDatalist, TLocation } from "../types/types";
-
 import styles from "./app.module.scss";
+import {
+  getAuthorId,
+  getLocationId,
+  removeAllQueryData,
+} from "../../services/slices/query";
 
 function App() {
   const modal = useAppSelector((store) => store.modal.open);
@@ -23,6 +27,12 @@ function App() {
 
   const [authorInputValue, setAuthorInputValue] = useState<string>("");
   const [locationInputValue, setLocationInputValue] = useState<string>("");
+  const [choosenAuthorId, setChoosenAuthorId] = useState<number | undefined>(
+    undefined
+  );
+  const [choosenLocationId, setChoosenLocationId] = useState<
+    number | undefined
+  >(undefined);
 
   //Массивы для парсинга в компоненте
   const [authorsList, setAuthorsList] = useState<
@@ -48,18 +58,34 @@ function App() {
     setLocationsList(originalLocationsList.current);
   }, [locations]);
 
-  const onAuthorsListItemClick = useCallback((authorInputValue: string) => {
-    setAuthorInputValue(authorInputValue);
-  }, []);
+  const onAuthorsListItemClick = useCallback(
+    (authorInputValue: string, authorId: number) => {
+      setAuthorInputValue(authorInputValue);
+      setChoosenAuthorId(authorId);
+    },
+    []
+  );
 
-  const onLocationListItemClick = useCallback((locationInputValue: string) => {
-    setLocationInputValue(locationInputValue);
-  }, []);
+  const onLocationListItemClick = useCallback(
+    (locationInputValue: string, locationId: number) => {
+      setLocationInputValue(locationInputValue);
+      setChoosenLocationId(locationId);
+    },
+    []
+  );
 
   const authorsFilter = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     setAuthorInputValue(event.target.value);
   }, []);
 
+  const locationsFilter = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      setLocationInputValue(event.target.value);
+    },
+    []
+  );
+
+  //Ищем совпадения при вводе текста в инпут автора
   useEffect(() => {
     const math = originalAuthorsList.current.filter((item) =>
       item.label
@@ -70,13 +96,7 @@ function App() {
     setAuthorsList(math);
   }, [authorInputValue]);
 
-  const locationsFilter = useCallback(
-    (event: ChangeEvent<HTMLInputElement>) => {
-      setLocationInputValue(event.target.value);
-    },
-    []
-  );
-
+  //Ищем совпадения при вводе текста в инпут локации
   useEffect(() => {
     const math = originalLocationsList.current.filter((item) =>
       item.label
@@ -87,19 +107,33 @@ function App() {
     setLocationsList(math);
   }, [locationInputValue]);
 
-  //Очищаем инпут когда закрывает модальное окно
-  useEffect(() => {
-    setAuthorInputValue('')
-    setLocationInputValue('')
-  }, [modal])
+  const onClearAllInputs = useCallback(() => {
+    setAuthorInputValue("");
+    setLocationInputValue("");
+    setChoosenAuthorId(undefined);
+    setChoosenLocationId(undefined);
+    dispatch(removeAllQueryData());
+  }, [dispatch]);
+
+  const onShowResults = useCallback(() => {
+    // dispatch(closeModal());
+    if (choosenAuthorId) {
+      dispatch(getAuthorId(choosenAuthorId));
+    }
+    if (choosenLocationId) {
+      dispatch(getLocationId(choosenLocationId));
+    }
+  }, [choosenAuthorId, choosenLocationId, dispatch]);
 
   return (
     <div className={styles.app}>
       <Header />
       <Main />
       <Modal
-        onClose={() =>  dispatch(closeModal())}
+        onClose={() => dispatch(closeModal())}
         state={modal ? ElementStates.Open : ElementStates.Closed}
+        onClearClick={onClearAllInputs}
+        onShowResultsClick={onShowResults}
       >
         <Accordion title={"Artists"}>
           {authorsIsSuccess && locationssIsSuccess ? (

@@ -7,12 +7,15 @@ export type TPicture = {
   name: string;
 };
 
-export type TPageLimit = {
+export type TQuery = {
   q?: string;
-  authorId?: string;
+  authorId?: number;
+  locationId?: number;
+  created_gte?: string;
+  created_lte?: string;
 };
 
-export type TQuery = TPageLimit & {
+export type TPageLimit = TQuery & {
   _page: number;
   _limit: number;
 };
@@ -28,6 +31,6 @@ export type TLocation = {
 };
 
 export type TDataForDatalist = {
-  id: string | number;
+  id: number;
   label: string | number;
 }

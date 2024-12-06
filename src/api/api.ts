@@ -53,17 +53,23 @@ export const api = createApi({
   endpoints(build) {
     return {
       //Получаем данные, не постранично, для динамической отрисовки пагинатора
-      getDataTotal: build.query<TPicture[], TPageLimit>({
-        query: (query: TPageLimit) => ({
+      getDataTotal: build.query<TPicture[], TQuery>({
+        query: (query: TQuery) => ({
           url: "/paintings",
           method: "get",
-          params: { q: query.q, authorId: query.authorId },
+          params: {
+            q: query.q,
+            authorId: query.authorId,
+            locationId: query.locationId,
+            created_gte: query.created_gte,
+            created_lte: query.created_lte,
+          },
         }),
       }),
 
       //Получаем данные постранично для отрисовки карточек
-      getPage: build.query<TPicture[], TQuery>({
-        query: (query: TQuery) => ({
+      getPage: build.query<TPicture[], TPageLimit>({
+        query: (query: TPageLimit) => ({
           url: "/paintings",
           method: "get",
           params: query,

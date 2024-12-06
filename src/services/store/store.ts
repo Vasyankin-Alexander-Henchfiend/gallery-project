@@ -4,6 +4,7 @@ import { modalReducer } from "../slices/modal";
 import { picturesReducer } from "../slices/pictures";
 import { authorsReducer } from "../slices/authors";
 import { locationsReducer } from "../slices/locations";
+import { queryReducer } from "../slices/query";
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
     pictures: picturesReducer,
     authors: authorsReducer,
     locations: locationsReducer,
+    query: queryReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(api.middleware),

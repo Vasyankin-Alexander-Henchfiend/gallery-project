@@ -8,6 +8,8 @@ export const Modal: React.FC<IModal> = ({
   children,
   onClose,
   state = ElementStates.Closed,
+  onShowResultsClick,
+  onClearClick,
 }) => {
   useEffect(() => {
     const closeByEsc = (e: KeyboardEvent) => {
@@ -31,8 +33,15 @@ export const Modal: React.FC<IModal> = ({
         />
         <div className={styles[`accordion-container`]}>{children}</div>
         <div className={styles[`buttons-container`]}>
-          <button className={styles[`text-button`]}>show the results</button>
-          <button className={styles[`text-button`]}>clear</button>
+          <button
+            onClick={onShowResultsClick}
+            className={styles[`text-button`]}
+          >
+            show the results
+          </button>
+          <button onClick={onClearClick} className={styles[`text-button`]}>
+            clear
+          </button>
         </div>
       </div>
       {state === ElementStates.Open && <ModalOverlay onClose={onClose} />}
