@@ -25,7 +25,7 @@ export const Pagination = (props: TPaginationProps) => {
   };
 
   const pageNumbers = (number: number): number[] => {
-    return Array.from({ length: number }, (v, i) => i + 1);
+    return Array.from({ length: number }, (i: number) => i + 1);
   };
 
   return (
