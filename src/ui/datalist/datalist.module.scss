@@ -64,7 +64,7 @@
     right: 20px;
     transition: transform 0.2s ease;
     cursor: pointer;
-    filter: invert(69%) sepia(15%) saturate(5%) hue-rotate(321deg) brightness(87%) contrast(88%);
+    filter: index.$secondary-gray-for-svg;
   }
 
   .overlay {
@@ -87,8 +87,6 @@
   overflow: hidden;
   overflow-y: scroll;
   z-index: 100;
-  // scrollbar-width: thin;
-  // scrollbar-color: index.$secondary-gray index.$primary-white;
 
   &::-webkit-scrollbar {
     width: 4px;

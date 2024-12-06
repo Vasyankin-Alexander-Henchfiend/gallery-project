@@ -13,6 +13,15 @@ $secondary-gray: rgba(156, 156, 156, 1);
 $accent-red: rgba(155, 75, 75, 1);
 $accent-gold: rgba(171, 137, 86, 1);
 
+$secondary-gray-for-svg: invert(69%) sepia(15%) saturate(5%) hue-rotate(321deg) brightness(87%) contrast(88%);
+$primary-black-for-svg: brightness(0) saturate(100%) invert(0%) sepia(67%) saturate(602%) hue-rotate(324deg) brightness(87%) contrast(86%);
+
+$filter-icon: url(/src/components/app/assets/images/filter_icon.svg);
+$closed-icon: url(/src/components/app/assets/images/close-icon-size=default.svg);
+$minus-icon: url(/src/components/app/assets/images/minus-icon-size=Default.svg);
+$search-icon: url(/src/components/app/assets/images/search_icon.svg);
+$plus-icon: url(/src/components/app/assets/images/plus-icon-size=Default.svg);
+$simple-arrow-icon: url(/src/components/app/assets/images/simple_arrow_icon.svg);
 
 %header-big {
     font: {

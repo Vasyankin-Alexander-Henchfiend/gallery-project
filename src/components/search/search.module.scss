@@ -61,27 +61,27 @@
     }
 
 
-    .filter {
-        &-button {
-            width: 36px;
-            height: 36px;
-            border-radius: 4px;
-            background: index.$secondary-white;
-            padding: 6px;
+    .filter-button {
+        width: 36px;
+        height: 36px;
+        border-radius: 4px;
+        background: index.$secondary-white;
+        padding: 6px;
 
-            &:hover {
-                background: index.$primary-black-hagh-opacity;
+        &:hover {
+            background: index.$primary-black-hagh-opacity;
+
+            .filter-icon {
+                filter: index.$primary-black-for-svg;
+
             }
         }
 
-        &-icon {
-            background-image: url(/src/components/app/assets/images/filter_icon.svg);
+        .filter-icon {
+            background-image: index.$filter-icon;
             width: 24px;
             height: 24px;
-
-            &:hover {
-                filter: brightness(0) saturate(100%) invert(0%) sepia(67%) saturate(602%) hue-rotate(324deg) brightness(87%) contrast(86%);
-            }
         }
     }
+
 }

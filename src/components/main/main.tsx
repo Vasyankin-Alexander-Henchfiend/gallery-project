@@ -92,19 +92,21 @@ export const Main: React.FC = () => {
         ) : null}
       </ul>
       {/* Компонент пагинация для переключения страниц с картинами */}
-      <Pagination
-        onNextPageClick={handleNextPageClick}
-        onPrevPageClick={handlePrevPageClick}
-        onNumberPageClick={handleNumberPageClick}
-        disable={{
-          left: page === 1,
-          right: page === getTotalPageCount(picturesTotal, PICTURE_PER_PAGE),
-        }}
-        nav={{
-          current: page,
-          total: getTotalPageCount(picturesTotal, PICTURE_PER_PAGE),
-        }}
-      />
+      {getTotalPageCount(picturesTotal, PICTURE_PER_PAGE) > 1 && (
+        <Pagination
+          onNextPageClick={handleNextPageClick}
+          onPrevPageClick={handlePrevPageClick}
+          onNumberPageClick={handleNumberPageClick}
+          disable={{
+            left: page === 1,
+            right: page === getTotalPageCount(picturesTotal, PICTURE_PER_PAGE),
+          }}
+          nav={{
+            current: page,
+            total: getTotalPageCount(picturesTotal, PICTURE_PER_PAGE),
+          }}
+        />
+      )}
     </main>
   );
 };

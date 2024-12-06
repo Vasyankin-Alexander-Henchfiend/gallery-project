@@ -5,16 +5,16 @@ type TQuery = {
   query: string;
   authorId?: number;
   locationId?: number;
-  yearFrom: string;
-  yearTo: string;
+  yearFrom?: string;
+  yearTo?: string;
 };
 
 const initialState: TQuery = {
-  query: "",
+  query: '',
   authorId: undefined,
   locationId: undefined,
-  yearFrom: '',
-  yearTo: '',
+  yearFrom: undefined,
+  yearTo: undefined,
 };
 
 const querySlice = createSlice({
@@ -33,8 +33,8 @@ const querySlice = createSlice({
     removeAllQueryData: (state) => {
       state.authorId = undefined;
       state.locationId = undefined;
-      state.yearFrom = '';
-      state.yearTo = '';
+      state.yearFrom = undefined;
+      state.yearTo = undefined;
     },
   },
 });
