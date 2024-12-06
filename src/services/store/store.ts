@@ -2,12 +2,16 @@ import { configureStore } from "@reduxjs/toolkit";
 import { api } from "../../api/api";
 import { modalReducer } from "../slices/modal";
 import { picturesReducer } from "../slices/pictures";
+import { authorsReducer } from "../slices/authors";
+import { locationsReducer } from "../slices/locations";
 
 export const store = configureStore({
   reducer: {
     [api.reducerPath]: api.reducer,
     modal: modalReducer,
     pictures: picturesReducer,
+    authors: authorsReducer,
+    locations: locationsReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(api.middleware),
