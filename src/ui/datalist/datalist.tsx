@@ -1,30 +1,30 @@
-import { useState } from "react";
-import styles from "./datalist.module.scss";
-import { ModalOverlay } from "../../components/modal/modal-overlay/modal-overlay";
-import { TDataForDatalist } from "../../components/types/types";
+import { useState } from 'react'
+import styles from './datalist.module.scss'
+import { ModalOverlay } from '../../components/modal/modal-overlay/modal-overlay'
+import { TDataForDatalist } from '../../components/types/types'
 
 interface InputWithDataList extends React.HTMLProps<HTMLInputElement> {
-  placeholder: string;
-  onGetItem: (arg: string, arg1: number) => void;
-  type: string;
-  dataArray: TDataForDatalist[] | undefined;
+  placeholder: string
+  onGetItem: (arg: string, arg1: number) => void
+  type: string
+  dataArray: TDataForDatalist[] | undefined
 }
 
 export const InputWithDatalist: React.FC<InputWithDataList> = (props) => {
-  const { placeholder, type, dataArray = null, onGetItem, ...rest } = props;
+  const { placeholder, type, dataArray = null, onGetItem, ...rest } = props
 
   enum ListState {
-    Hidden = "hidden",
-    Visible = "visible",
+    Hidden = 'hidden',
+    Visible = 'visible',
   }
 
-  const [listState, setListState] = useState(ListState.Hidden);
+  const [listState, setListState] = useState(ListState.Hidden)
 
   const listSeter = () => {
     if (listState === ListState.Hidden) {
-      setListState(ListState.Visible);
-    } else setListState(ListState.Hidden);
-  };
+      setListState(ListState.Visible)
+    } else setListState(ListState.Hidden)
+  }
 
   return (
     <form id="datalist" className={`${styles.datalist} ${styles[listState]}`}>
@@ -60,5 +60,5 @@ export const InputWithDatalist: React.FC<InputWithDataList> = (props) => {
         />
       )}
     </form>
-  );
-};
+  )
+}

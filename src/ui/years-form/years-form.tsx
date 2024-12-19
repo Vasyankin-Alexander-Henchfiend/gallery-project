@@ -1,4 +1,4 @@
-import styles from "./years-form.module.scss";
+import styles from './years-form.module.scss'
 
 export const YearsForm = () => {
   return (
@@ -17,5 +17,5 @@ export const YearsForm = () => {
         type="text"
       />
     </form>
-  );
-};
+  )
+}

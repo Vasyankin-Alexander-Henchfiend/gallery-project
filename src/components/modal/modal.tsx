@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import styles from "./modal.module.scss";
-import { IconButton } from "../../ui/icon-button/icon-button";
-import { ModalOverlay } from "./modal-overlay/modal-overlay";
-import { ElementStates, IModal } from "./modal.types";
+import React, { useEffect } from 'react'
+import styles from './modal.module.scss'
+import { IconButton } from '../../ui/icon-button/icon-button'
+import { ModalOverlay } from './modal-overlay/modal-overlay'
+import { ElementStates, IModal } from './modal.types'
 
 export const Modal: React.FC<IModal> = ({
   children,
@@ -13,15 +13,15 @@ export const Modal: React.FC<IModal> = ({
 }) => {
   useEffect(() => {
     const closeByEsc = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        onClose();
+      if (e.key === 'Escape') {
+        onClose()
       }
-    };
-    document.addEventListener("keydown", closeByEsc);
+    }
+    document.addEventListener('keydown', closeByEsc)
     return () => {
-      document.removeEventListener("keydown", closeByEsc);
-    };
-  }, [onClose]);
+      document.removeEventListener('keydown', closeByEsc)
+    }
+  }, [onClose])
 
   return (
     <div className={`${styles.modal} ${styles[state]}`}>
@@ -46,6 +46,6 @@ export const Modal: React.FC<IModal> = ({
       </div>
       {state === ElementStates.Open && <ModalOverlay onClose={onClose} />}
     </div>
-  );
-};
-export { ElementStates };
+  )
+}
+export { ElementStates }

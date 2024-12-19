@@ -1,15 +1,15 @@
-import styles from "./icon-button.module.scss";
+import styles from './icon-button.module.scss'
 
 interface IconButton {
-  extraClassButton?: string;
-  extraClassIcon?: string;
-  onClick: () => void;
-  disabled?: boolean;
+  extraClassButton?: string
+  extraClassIcon?: string
+  onClick: () => void
+  disabled?: boolean
 }
 
 export const IconButton: React.FC<IconButton> = ({
-  extraClassButton = "",
-  extraClassIcon = "",
+  extraClassButton = '',
+  extraClassIcon = '',
   onClick,
   ...rest
 }) => {
@@ -22,5 +22,5 @@ export const IconButton: React.FC<IconButton> = ({
     >
       <i className={`${styles.icon} ${extraClassIcon}`} />
     </button>
-  );
-};
+  )
+}

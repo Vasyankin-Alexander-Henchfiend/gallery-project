@@ -1,16 +1,16 @@
-import { IconButton } from "../../ui/icon-button/icon-button";
-import styles from "./search.module.scss";
+import { IconButton } from '../../ui/icon-button/icon-button'
+import styles from './search.module.scss'
 
 interface InputProps extends React.HTMLProps<HTMLInputElement> {
-  placeholder?: string;
-  filterIconClick: () => void;
-  closedIconClick: () => void;
-  value: string;
+  placeholder?: string
+  filterIconClick: () => void
+  closedIconClick: () => void
+  value: string
 }
 
 export const Search: React.FC<InputProps> = ({
-  placeholder = "",
-  type = "search",
+  placeholder = '',
+  type = 'search',
   filterIconClick,
   closedIconClick,
   value,
@@ -26,11 +26,13 @@ export const Search: React.FC<InputProps> = ({
           value={value}
           {...rest}
         />
-        {value != '' && <IconButton
-          extraClassButton={styles[`closed-button`]}
-          extraClassIcon={styles[`closed-icon`]}
-          onClick={closedIconClick}
-        />}
+        {value != '' && (
+          <IconButton
+            extraClassButton={styles[`closed-button`]}
+            extraClassIcon={styles[`closed-icon`]}
+            onClick={closedIconClick}
+          />
+        )}
       </form>
       <IconButton
         extraClassButton={styles[`filter-button`]}
@@ -38,5 +40,5 @@ export const Search: React.FC<InputProps> = ({
         onClick={filterIconClick}
       />
     </div>
-  );
-};
+  )
+}

@@ -1,23 +1,23 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { TPicture } from "../../components/types/types";
+import { createSlice } from '@reduxjs/toolkit'
+import { TPicture } from '../../components/types/types'
 
 type TPicturesState = {
-    pictures: TPicture[]
+  pictures: TPicture[]
 }
 
 const initialState: TPicturesState = {
-    pictures: []
+  pictures: [],
 }
 
 const picturesSlice = createSlice({
-    name: 'pictures',
-    initialState,
-    reducers: {
-        getPictures: (state, action) => {
-            state.pictures = action.payload
-        },
-    }
+  name: 'pictures',
+  initialState,
+  reducers: {
+    getPictures: (state, action) => {
+      state.pictures = action.payload
+    },
+  },
 })
 
-export const { getPictures } = picturesSlice.actions;
-export const picturesReducer = picturesSlice.reducer;
+export const { getPictures } = picturesSlice.actions
+export const picturesReducer = picturesSlice.reducer

@@ -1,7 +1,7 @@
-import styles from "./pagination.module.scss";
-import cn from "classnames";
-import { IconButton } from "../../ui/icon-button/icon-button";
-import { TPaginationProps } from "./pagination.types";
+import styles from './pagination.module.scss'
+import cn from 'classnames'
+import { IconButton } from '../../ui/icon-button/icon-button'
+import { TPaginationProps } from './pagination.types'
 
 export const Pagination = (props: TPaginationProps) => {
   const {
@@ -10,23 +10,23 @@ export const Pagination = (props: TPaginationProps) => {
     onNextPageClick,
     onPrevPageClick,
     onNumberPageClick,
-  } = props;
+  } = props
 
   const handleNextPageClick = () => {
-    onNextPageClick();
-  };
+    onNextPageClick()
+  }
 
   const handlePrevPageClick = () => {
-    onPrevPageClick();
-  };
+    onPrevPageClick()
+  }
 
   const handleNumberPageClick = (item: number) => {
-    onNumberPageClick(item);
-  };
+    onNumberPageClick(item)
+  }
 
   const pageNumbers = (number: number): number[] => {
-    return Array.from({ length: number }, (_v, i: number) => i + 1);
-  };
+    return Array.from({ length: number }, (_v, i: number) => i + 1)
+  }
 
   return (
     <div className={styles.paginator}>
@@ -44,12 +44,19 @@ export const Pagination = (props: TPaginationProps) => {
               key={index}
               className={cn(
                 styles.navigation,
-                nav.current === index + 1 ? styles.choosen : styles.default
+                nav.current === index + 1 ? styles.choosen : styles.default,
               )}
             >
-              <span className={cn(styles.number, nav.current === index + 1 && styles.choosen)}>{item}</span>
+              <span
+                className={cn(
+                  styles.number,
+                  nav.current === index + 1 && styles.choosen,
+                )}
+              >
+                {item}
+              </span>
             </button>
-          );
+          )
         })}
       <IconButton
         extraClassButton={styles[`arrow-button`]}
@@ -58,5 +65,5 @@ export const Pagination = (props: TPaginationProps) => {
         disabled={disable.right}
       />
     </div>
-  );
-};
+  )
+}

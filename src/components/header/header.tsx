@@ -1,7 +1,7 @@
-import styles from "./header.module.scss";
-import logo from "../app/assets/images/logo.svg";
-import React from "react";
-import { IconButton } from "../../ui/icon-button/icon-button";
+import styles from './header.module.scss'
+import logo from '../app/assets/images/logo.svg'
+import React from 'react'
+import { IconButton } from '../../ui/icon-button/icon-button'
 
 export const Header: React.FC = () => {
   return (
@@ -15,5 +15,5 @@ export const Header: React.FC = () => {
         onClick={() => null}
       />
     </header>
-  );
-};
+  )
+}
