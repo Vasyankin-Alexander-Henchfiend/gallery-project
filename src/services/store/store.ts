@@ -5,6 +5,7 @@ import { picturesReducer } from '../slices/pictures'
 import { authorsReducer } from '../slices/authors'
 import { locationsReducer } from '../slices/locations'
 import { queryReducer } from '../slices/query'
+import { themeReducer } from '../slices/theme'
 
 export const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ export const store = configureStore({
     authors: authorsReducer,
     locations: locationsReducer,
     query: queryReducer,
+    theme: themeReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(api.middleware),
