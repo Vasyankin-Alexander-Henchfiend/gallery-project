@@ -16,6 +16,7 @@ import {
   getLocationId,
   removeAllQueryData,
 } from '../../services/slices/query'
+import { Theme } from '../theme/theme'
 
 function App() {
   const modal = useAppSelector((store) => store.modal.open)
@@ -127,6 +128,7 @@ function App() {
 
   return (
     <div className={styles.app}>
+      <Theme />
       <Header />
       <Main />
       <Modal

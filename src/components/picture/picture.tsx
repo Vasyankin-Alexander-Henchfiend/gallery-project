@@ -13,7 +13,7 @@ export const Picture = ({ item }: TPictureItem) => {
   const location = locations?.find((item) => item.id === locationId)
 
   if (authorsIsLoading && locationsIsLoading) {
-    return <div>Ну вот и всё</div>
+    return <div>Идёт загрузка</div>
   }
 
   return (
