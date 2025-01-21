@@ -22,9 +22,14 @@
         position: absolute;
         top: 60px;
         right: 100px;
+        width: 20px;
+        height: 20px;
+        background: none;
 
         .icon {
             background-image: url(../app/assets/images/close-icon-size=default.svg);
+            width: 16px;
+            height: 16px;
         }
     }
 
