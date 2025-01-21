@@ -12,17 +12,19 @@
             height: 24px;
             border-radius: 4px;
             margin: 0 18px;
+            background: none;
 
             &:hover {
-                background-color: index.$primary-black-hagh-opacity;
-                border-radius: 4px;
+                background-color: var(--colors-button-background);
             }
         }
 
         &-icon {
             background-image: url(../app/assets/images/simple_arrow_icon.svg);
+            filter: var(--colors-primary-for-svg);
             width: 7.6px;
             height: 11.8px;
+            margin: auto;
 
             &-left {
                 transform: rotate(180deg);
@@ -38,7 +40,7 @@
         margin: 0 2px;
 
         &.choosen {
-            background-color: index.$primary-black-hagh-opacity;
+            background-color: var(--colors-button-background);
             border-radius: 4px;
         }
 

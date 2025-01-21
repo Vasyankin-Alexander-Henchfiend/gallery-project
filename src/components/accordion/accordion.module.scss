@@ -37,6 +37,7 @@
     width: 16px;
     background-position: center;
     background-image: url(../app/assets/images/plus-icon-size=Default.svg);
+    filter: var(--colors-primary-for-svg);
     transition: transform 0.3s ease;
     
     &.open {

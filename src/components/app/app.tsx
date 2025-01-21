@@ -16,7 +16,6 @@ import {
   getLocationId,
   removeAllQueryData,
 } from '../../services/slices/query'
-import { ThemeButton } from '../theme-button/theme-button'
 
 function App() {
   const modal = useAppSelector((store) => store.modal.open)

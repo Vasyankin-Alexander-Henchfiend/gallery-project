@@ -65,20 +65,21 @@
         width: 36px;
         height: 36px;
         border-radius: 4px;
-        background: index.$secondary-white;
+        background: var(--colors-button-background);
         padding: 6px;
 
         &:hover {
-            background: index.$primary-black-hagh-opacity;
+            background: var(--colors-button-background);
 
             .filter-icon {
-                filter: index.$primary-black-for-svg;
+                filter: var(--colors-hover-for-svg);
 
             }
         }
 
         .filter-icon {
             background-image: index.$filter-icon;
+            filter: var(--colors-primary-for-svg);
             width: 24px;
             height: 24px;
         }
