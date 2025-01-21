@@ -30,7 +30,7 @@
     .white-box {
         width: 300px;
         height: 82px;
-        background-color: index.$primary-white;
+        background-color: var(--background-color);
         position: absolute;
         bottom: 0;
         left: 0;
@@ -38,7 +38,7 @@
         .red-column {
             width: 2px;
             height: 42px;
-            background-color: index.$accent-red;
+            background-color: var(--additional-text-color);
             position: absolute;
             bottom: 20px;
         }
@@ -69,13 +69,13 @@
         .name {
             @extend %header-big;
             margin: 0;
-            color: index.$primary-black;
+            color: var(--main-text-color);
         }
     
         .date {
             @extend %caption-bold-uppercase-big;
             margin: 0;
-            color: index.$accent-red;
+            color: var(--additional-text-color)
         }
     }
 }

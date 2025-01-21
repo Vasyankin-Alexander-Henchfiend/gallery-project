@@ -5,7 +5,7 @@
     width: 100vw;
     max-width: 492px;
     position: fixed;
-    background-color: index.$secondary-white;
+    background-color: var(--background-color);
     transition: right 0.3s ease;
     
     &.closed {
