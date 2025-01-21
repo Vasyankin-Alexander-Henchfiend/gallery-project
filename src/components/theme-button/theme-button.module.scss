@@ -3,20 +3,30 @@
 .theme-button {
   width: 40px;
   height: 40px;
-  background-color: index.$secondary-white;
   border-radius: 50%;
+
+  &.light {
+    padding: 8px 10.4px 9.2px;
+    background-color: index.$secondary-white;
+  }
+
+  &.dark {
+    padding: 10px;
+    background-color: index.$secondary-black;
+  }
+
   .theme-icon {
-    width: 20px;
-    height: 20px;
-  
     &.light {
       background-image: url(../app/assets/images/dark_icon.svg);
+      width: 19.2px;
+      height: 22.8px;
     }
-  
+
     &.dark {
       background-image: url(../app/assets/images/light_icon.svg);
       filter: index.$primary-light-gray-for-svg;
+      width: 20px;
+      height: 20px;
     }
   }
 }
-

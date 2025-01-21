@@ -23,7 +23,10 @@ export const ThemeButton: React.FC<IThemeButton> = ({ className }) => {
 
   return (
     <IconButton
-      extraClassButton={styles[`theme-button`]}
+      extraClassButton={cn(
+        styles[`theme-button`],
+        theme === 'dark' ? styles.dark : styles.light,
+      )}
       extraClassIcon={cn(
         className,
         styles[`theme-icon`],
