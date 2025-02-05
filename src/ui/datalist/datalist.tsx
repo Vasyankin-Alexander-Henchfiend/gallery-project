@@ -2,6 +2,7 @@ import { useState } from 'react'
 import styles from './datalist.module.scss'
 import { ModalOverlay } from '../../components/modal/modal-overlay/modal-overlay'
 import { TDataForDatalist } from '../../components/types/types'
+import { Input } from '../input/input'
 
 interface InputWithDataList extends React.HTMLProps<HTMLInputElement> {
   placeholder: string
@@ -28,9 +29,9 @@ export const InputWithDatalist: React.FC<InputWithDataList> = (props) => {
 
   return (
     <form id="datalist" className={`${styles.datalist} ${styles[listState]}`}>
-      <input
-        onClick={() => setListState(ListState.Visible)}
-        className={styles[`datalist-input`]}
+      <Input
+        onClick={() => listSeter()}
+        extraClass={styles[`datalist-input`]}
         type={type}
         placeholder={placeholder}
         {...rest}
@@ -54,10 +55,7 @@ export const InputWithDatalist: React.FC<InputWithDataList> = (props) => {
         )}
       </ul>
       {listState === ListState.Visible && (
-        <ModalOverlay
-          extraClass={styles.overlay}
-          onClose={() => setListState(ListState.Hidden)}
-        />
+        <ModalOverlay extraClass={styles.overlay} onClose={() => listSeter()} />
       )}
     </form>
   )

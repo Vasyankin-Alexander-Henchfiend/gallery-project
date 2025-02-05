@@ -1,0 +1,27 @@
+.input {
+    box-sizing: border-box;
+    border-radius: 4px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--colors-border-default);
+    caret-color: var(--colors-input-text);
+    color: var(--colors-input-text);
+    background-color: var(--colors-input-background);
+
+    &:focus {
+        &::placeholder {
+            visibility: hidden;
+        }
+
+        outline: none !important;
+        border-color: var(--colors-border-active);
+    }
+
+    &::placeholder {
+        color: var(--colors-input-placeholder);
+    }
+
+    &::-webkit-search-cancel-button {
+        -webkit-appearance: none;
+    }
+}

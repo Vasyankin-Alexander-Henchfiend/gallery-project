@@ -1,4 +1,5 @@
 import { IconButton } from '../../ui/icon-button/icon-button'
+import { Input } from '../../ui/input/input'
 import styles from './search.module.scss'
 
 interface InputProps extends React.HTMLProps<HTMLInputElement> {
@@ -19,13 +20,20 @@ export const Search: React.FC<InputProps> = ({
   return (
     <div className={styles.search}>
       <form className={styles.form}>
-        <input
+        <Input
+          extraClass={styles.input}
+          type={type}
+          placeholder={placeholder}
+          value={value}
+          {...rest}
+        />
+        {/* <input
           type={type}
           placeholder={placeholder}
           className={styles.input}
           value={value}
           {...rest}
-        />
+        /> */}
         {value != '' && (
           <IconButton
             extraClassButton={styles[`closed-button`]}
