@@ -3,6 +3,8 @@ import styles from './datalist.module.scss'
 import { ModalOverlay } from '../../components/modal/modal-overlay/modal-overlay'
 import { TDataForDatalist } from '../../components/types/types'
 import { Input } from '../input/input'
+import SimpleBar from 'simplebar-react'
+import 'simplebar-react/dist/simplebar.min.css'
 
 interface InputWithDataList extends React.HTMLProps<HTMLInputElement> {
   placeholder: string
@@ -37,25 +39,32 @@ export const InputWithDatalist: React.FC<InputWithDataList> = (props) => {
         {...rest}
       />
       <i className={styles.icon} onClick={() => listSeter()} />
-      <ul className={styles.list}>
-        {dataArray != undefined && dataArray?.length > 0 ? (
-          dataArray?.map((item) => (
-            <li
-              className={styles[`list-item`]}
-              key={item.id}
-              onClick={() => onGetItem(item.label.toString(), item.id)}
-            >
-              {item.label}
-            </li>
-          ))
-        ) : (
-          <div className={styles[`no-math`]}>
-            There are no matching results for your query.
-          </div>
-        )}
-      </ul>
       {listState === ListState.Visible && (
-        <ModalOverlay extraClass={styles.overlay} onClose={() => listSeter()} />
+        <>
+          <ul className={styles.list}>
+            {dataArray != undefined && dataArray?.length > 0 ? (
+              <SimpleBar autoHide={false} className={styles[`simple-bar`]}>
+                {dataArray?.map((item) => (
+                  <li
+                    className={styles[`list-item`]}
+                    key={item.id}
+                    onClick={() => onGetItem(item.label.toString(), item.id)}
+                  >
+                    {item.label}
+                  </li>
+                ))}
+              </SimpleBar>
+            ) : (
+              <div className={styles[`no-math`]}>
+                There are no matching results for your query.
+              </div>
+            )}
+          </ul>
+          <ModalOverlay
+            extraClass={styles.overlay}
+            onClose={() => listSeter()}
+          />
+        </>
       )}
     </form>
   )

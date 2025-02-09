@@ -24,20 +24,12 @@
   }
 
   &.hidden {
-    .list {
-      visibility: hidden;
-    }
-
     .icon {
       transform: rotate(0deg);
     }
   }
 
   &.visible {
-    .list {
-      visibility: visible;
-    }
-
     .icon {
       transform: rotate(180deg);
     }
@@ -62,34 +54,28 @@
   }
 }
 
+.simplebar-scrollbar::before {
+  background-color: red;
+}
 
 .list {
   position: absolute;
   margin: 12px 0 0 0;
   padding: 0;
   width: 100%;
-  max-height: 200px;
+  max-height: 220px;
   top: 100%;
   left: 0;
   list-style: none;
   border-radius: 2px;
   background: index.$primary-white;
   overflow: hidden;
-  overflow-y: scroll;
   z-index: 100;
 
-  &::-webkit-scrollbar {
-    width: 4px;
-  }
 
-  &::-webkit-scrollbar-track {
-    border-radius: 4px;
-    box-shadow: inset 0 0 10px index.$primary-white;
-  }
 
-  &::-webkit-scrollbar-thumb {
-    border-radius: 4px;
-    box-shadow: inset 0 0 10px index.$secondary-gray;
+  .simple-bar {
+    max-height: 220px;
   }
 
   &-item {

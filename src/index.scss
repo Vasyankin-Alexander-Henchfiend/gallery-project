@@ -1,3 +1,5 @@
+@import './components/app/styles/index.scss';
+
 :root[data-theme="light"] {
     color-scheme: light;
     --background-color: rgba(255, 255, 255, 1);
@@ -30,6 +32,10 @@
 
 body {
     margin: 0;
+}
+
+.simplebar-scrollbar::before {
+    background-color: red;
 }
 
 #root {
