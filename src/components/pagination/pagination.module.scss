@@ -20,7 +20,7 @@
         }
 
         &-icon {
-            background-image: url(../app/assets/images/simple_arrow_icon.svg);
+            background-image: index.$simple-arrow-icon;
             filter: var(--colors-primary-for-svg);
             width: 7.6px;
             height: 11.8px;

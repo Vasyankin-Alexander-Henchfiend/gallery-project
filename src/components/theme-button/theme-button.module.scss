@@ -17,13 +17,13 @@
 
   .theme-icon {
     &.light {
-      background-image: url(../app/assets/images/dark_icon.svg);
+      background-image: index.$dark-icon;
       width: 19.2px;
       height: 22.8px;
     }
 
     &.dark {
-      background-image: url(../app/assets/images/light_icon.svg);
+      background-image: index.$light-icon;
       filter: index.$primary-light-gray-for-svg;
       width: 20px;
       height: 20px;

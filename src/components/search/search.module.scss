@@ -31,7 +31,7 @@
             }
 
             &-icon {
-                background-image: url(../app/assets/images/close-icon-size=small.svg);
+                background-image: index.$closed-icon;
                 width: 8px;
                 height: 8px;
             }

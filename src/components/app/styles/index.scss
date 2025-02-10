@@ -1,8 +1,9 @@
-@import "../assets/fonts/fonts.scss";
+@use "../assets/fonts/fonts.scss";
 
 $primary-white: rgba(255, 255, 255, 1);
 $primary-black: rgba(18, 18, 18, 1);
 $primary-black-hagh-opacity: rgba(18, 18, 18, 0.05);
+$gray-hagh-opacity: rgba(205, 205, 205, 0.05);
 $primary-light-gray: rgba(222, 222, 222, 1);
 $primary-dark-gray: rgba(87, 87, 87, 1);
 
@@ -23,6 +24,9 @@ $minus-icon: url(/src/components/app/assets/images/minus-icon-size=Default.svg);
 $search-icon: url(/src/components/app/assets/images/search_icon.svg);
 $plus-icon: url(/src/components/app/assets/images/plus-icon-size=Default.svg);
 $simple-arrow-icon: url(/src/components/app/assets/images/simple_arrow_icon.svg);
+$expand-icon: url(../../components/app/assets/images/expand_icon.svg);
+$dark-icon: url(../app/assets/images/dark_icon.svg);
+$light-icon: url(../app/assets/images/light_icon.svg);
 
 %header-big {
     font: {

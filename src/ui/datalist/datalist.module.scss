@@ -36,7 +36,7 @@
   }
 
   .icon {
-    background-image: url(../../components/app/assets/images/expand_icon.svg);
+    background-image: index.$expand-icon;
     background-position: center;
     background-repeat: no-repeat;
     width: 12px;
@@ -46,16 +46,12 @@
     right: 20px;
     transition: transform 0.2s ease;
     cursor: pointer;
-    filter: index.$secondary-gray-for-svg;
+    filter: var(--colors-primary-for-svg);
   }
 
   .overlay {
     z-index: 10;
   }
-}
-
-.simplebar-scrollbar::before {
-  background-color: red;
 }
 
 .list {
@@ -68,11 +64,9 @@
   left: 0;
   list-style: none;
   border-radius: 2px;
-  background: index.$primary-white;
+  background: var(--colors-datalist-background);
   overflow: hidden;
   z-index: 100;
-
-
 
   .simple-bar {
     max-height: 220px;
@@ -85,8 +79,8 @@
     height: 36px;
     padding: 8px 16px;
     box-sizing: border-box;
-    color: index.$primary-dark-gray;
-    background-color: index.$secondary-white;
+    color: var(--colors-datalist-item-text);
+    background-color: var(--colors-datalist-background);
     cursor: pointer;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -94,7 +88,7 @@
     z-index: 100;
 
     &:hover {
-      background: index.$primary-black-hagh-opacity;
+      background: var(--colors-datalist-item-hover);
     }
   }
 
@@ -107,6 +101,6 @@
     padding: 8px 16px;
     box-sizing: border-box;
     z-index: 100;
-    color: index.$primary-dark-gray;
+    color: var(--colors-datalist-item-text);
   }
 }

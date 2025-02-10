@@ -27,7 +27,7 @@
         background: none;
 
         .icon {
-            background-image: url(../app/assets/images/close-icon-size=default.svg);
+            background-image: index.$closed-icon;
             filter: var(--colors-primary-for-svg);
             width: 16px;
             height: 16px;
